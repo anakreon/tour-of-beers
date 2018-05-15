@@ -37,7 +37,7 @@
 - [ ] Try not to follow the Tour of Heroes too much
 
 ## Optionally (more bonus points):
-- [ ] \(Optional) Be responsive, use state-management system, service worker
+- [ ] \(Optional) Be responsive, use state-management system, service worker, external database
 ---
 
 - You can get inspired with Tour of Heroes: https://angular.io/tutorial
