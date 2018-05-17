@@ -1,28 +1,49 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
+import { 
+    MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, 
+    MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule 
+} from '@angular/material';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BeersComponent } from './beers/beers.component';
-import { BeerDetailComponent } from './beer-detail/beer-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
+import { AppNavComponent } from './app-nav/app-nav.component';
+import { AppBeersComponent } from './app-beers/app-beers.component';
+import { AppBeerDetailComponent } from './app-beer-detail/app-beer-detail.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        BeersComponent,
-        BeerDetailComponent,
-        MessagesComponent,
-        DashboardComponent
+        AppDashboardComponent,
+        AppNavComponent,
+        AppBeersComponent,
+        AppBeerDetailComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        AppRoutingModule
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatIconModule,
+        MatListModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
     providers: [],
-    bootstrap: [ AppComponent ]
+    bootstrap: [ 
+        AppComponent 
+    ]
 })
 export class AppModule { }

@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BeersComponent } from './beers/beers.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BeerDetailComponent } from './beer-detail/beer-detail.component';
+import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
+import { AppBeersComponent } from './app-beers/app-beers.component';
+import { AppBeerDetailComponent } from './app-beer-detail/app-beer-detail.component';
 
 const routes: Routes = [
-    { path: 'beers', component: BeersComponent },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: 'detail/:id', component: BeerDetailComponent },
+    { path: 'dashboard', component: AppDashboardComponent },
+    { path: 'beers', component: AppBeersComponent },
+    { path: 'detail/:id', component: AppBeerDetailComponent },
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 

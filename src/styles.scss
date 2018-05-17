@@ -1,0 +1,35 @@
+@import './app-theme';
+
+@include mat-core();
+
+$app-primary: mat-palette($mat-orange, 400);
+$app-accent: mat-palette($mat-blue, 600, 100, 800);
+$app-warn: mat-palette($mat-red);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($app-theme);
+
+
+/* Application-wide Styles */
+h1 {
+    color: #369;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 250%;
+}
+h2, h3 {
+    color: #444;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+body {
+    margin: 2   em;
+}
+body, input[text], button {
+    color: #888;
+    font-family: Cambria, Georgia;
+}
+/* everywhere else */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body { margin: 0; }
