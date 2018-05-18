@@ -1,9 +1,5 @@
 <div class="mat-elevation-z8">
     <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
-        </ng-container>
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
@@ -12,9 +8,9 @@
             <mat-header-cell *matHeaderCellDef mat-sort-header>Ingredients</mat-header-cell>
             <mat-cell *matCellDef="let row">{{row.ingredients}}</mat-cell>
         </ng-container>
-        <ng-container matColumnDef="alcohol">
+        <ng-container matColumnDef="abv">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Alcohol</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.alcohol}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.abv}}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="epm">
             <mat-header-cell *matHeaderCellDef mat-sort-header>EPM</mat-header-cell>
@@ -25,8 +21,9 @@
             <mat-cell *matCellDef="let row">{{row.brewery}}</mat-cell>
         </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/detail/{{row.id}}"></mat-row>
     </mat-table>
     <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
     </mat-paginator>
 </div>
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />

@@ -4,27 +4,19 @@ import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BeerStoreServiceService } from '../beer-store-service.service';
+import { Beer } from '../app.types';
 
-export interface AppBeerListItem {
-    id: number;
-    name: string;
-    ingredients: string;
-    alcohol: number;
-    epm: number;
-    brewery: string;
-}
+export class AppBeerListDataSource extends DataSource<Beer> {
 
-export class AppBeerListDataSource extends DataSource<AppBeerListItem> {
-
-    private data: AppBeerListItem[] = [];
+    private data: Beer[] = [];
 
     constructor (private paginator: MatPaginator, private sort: MatSort, private beerStoreService: BeerStoreServiceService) {
         super();
     }
 
-    connect(): Observable<AppBeerListItem[]> {
+    connect(): Observable<Beer[]> {
         const beerObservable = this.beerStoreService.getBeers().pipe(
-            tap((beers: AppBeerListItem[]) => {
+            tap((beers: Beer[]) => {
                 this.data = beers;
                 this.paginator.length = beers.length;
             })
@@ -36,7 +28,7 @@ export class AppBeerListDataSource extends DataSource<AppBeerListItem> {
         ];
 
         return merge(...dataMutations).pipe(
-            map((beers: AppBeerListItem[]) => {
+            map((beers: Beer[]) => {
                 return this.getPagedData(this.getSortedData([...this.data]));
             })
         );
@@ -44,12 +36,12 @@ export class AppBeerListDataSource extends DataSource<AppBeerListItem> {
 
     disconnect() { }
 
-    private getPagedData(data: AppBeerListItem[]) {
+    private getPagedData(data: Beer[]) {
         const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
         return data.splice(startIndex, this.paginator.pageSize);
     }
 
-    private getSortedData(data: AppBeerListItem[]) {
+    private getSortedData(data: Beer[]) {
         if (!this.sort.active || this.sort.direction === '') {
             return data;
         }

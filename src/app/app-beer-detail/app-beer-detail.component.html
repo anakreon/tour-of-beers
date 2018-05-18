@@ -1,11 +1,20 @@
-<div *ngIf="beer">
-    <h2>{{ beer.name | uppercase }} Details</h2>
-    <div>
-        <span>id: </span>{{beer.id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="beer.name" placeholder="name" />
-        </label>
-    </div>
-    <button (click)="goBack()">go back</button>
-</div>
+<mat-card class="beer-card" *ngIf="beer">
+    <mat-card-header>
+        <div mat-card-avatar class="beer-header-image"></div>
+        <mat-card-title>{{ beer.name }}</mat-card-title>
+        <mat-card-subtitle>epm: {{ beer.epm }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Cool beer photo here">
+    <mat-card-content>
+        <p>
+            {{ beer.ingredients }}
+        </p>
+        <p>
+            {{ beer.brewery }}
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="goBack()">BACK</button>
+        <button mat-button (click)="edit()">EDIT</button>
+    </mat-card-actions>
+</mat-card>

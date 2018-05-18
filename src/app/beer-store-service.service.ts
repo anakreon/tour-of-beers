@@ -1,20 +1,42 @@
+import { Beer } from './app.types';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AngularFirestore, DocumentChangeAction, DocumentSnapshot, Action } from 'angularfire2/firestore';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BeerStoreServiceService {
-    public getBeers () {
-        return of([{ 
-            id: 1, name: 'Gambrinus originál 10°', ingredients: 'voda, ječné slady, chmelové produkty', alcohol: 4.3, epm: 10, 
-            brewery: 'Pivovar Gambrinus Plzeň, U Prazdroje 7, Plzeň, 30497' 
-        }, { 
-            id: 2, name: 'Budweiser Budvar B:CLASSIC', ingredients: 'unknown', alcohol: 4.0, EPM: 10, 
-            brewery: 'Budějovický budvar, Karoliny Světlé 512/4, České Budějovice, 37004'
-        }, { 
-            id: 3, name: 'Pilsner Urquell', ingredients: 'voda, ječné slady, chmelové produkty, kvasnice', alcohol: 4.4, epm: 11.8,
-            brewery: 'Pivovar Plzeňský Prazdroj, U Prazdroje 7, Plzeň, 30497'
-        }]);
+    private beers: Observable<any[]>;
+
+    constructor (private afs: AngularFirestore) {}
+
+    public getBeers (): Observable<Beer[]> {
+        return this.afs.collection('beers').snapshotChanges().pipe(
+            map((values: DocumentChangeAction<{}>[]) => {
+                return values.map(this.buildBeerObjectForChangeAction);
+            })
+        );
+    }
+
+    public getBeer (beerId: string): any {
+        return this.afs.doc<Beer>('beers/' + beerId).snapshotChanges().pipe(
+            map((value: Action<DocumentSnapshot<{}>>) => {
+                return this.buildBeerObjectForSnapshot(value);
+            })
+        );
+    }
+
+    private buildBeerObjectForChangeAction (dca: DocumentChangeAction<{}>): Beer {
+        const data = dca.payload.doc.data() as Beer;
+        const id = dca.payload.doc.id;
+        return { id, ...data };
+    }
+
+    private buildBeerObjectForSnapshot (dca: Action<DocumentSnapshot<{}>>): Beer {
+        const data = dca.payload.data() as Beer;
+        const id = dca.payload.id;
+        return { id, ...data };
     }
 }
