@@ -8,8 +8,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { 
-    MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, 
-    MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule 
+    MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatFormFieldModule,
+    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule 
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,8 @@ import { AppBeersComponent } from './app-beers/app-beers.component';
 import { AppBeerDetailComponent } from './app-beer-detail/app-beer-detail.component';
 import { environment } from '../environments/environment';
 import { AppBeerAddFormComponent } from './app-beer-add-form/app-beer-add-form.component';
+import { AppBeerAddImageComponent } from './app-beer-add-image/app-beer-add-image.component';
+import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,9 @@ import { AppBeerAddFormComponent } from './app-beer-add-form/app-beer-add-form.c
         AppNavComponent,
         AppBeersComponent,
         AppBeerDetailComponent,
-        AppBeerAddFormComponent
+        AppBeerAddFormComponent,
+        AppBeerAddImageComponent,
+        AppBeerAddComponent
     ],
     imports: [
         BrowserModule,
@@ -44,10 +48,12 @@ import { AppBeerAddFormComponent } from './app-beer-add-form/app-beer-add-form.c
         MatButtonModule,
         MatSidenavModule,
         MatIconModule,
+        MatInputModule,
         MatListModule,
         MatGridListModule,
         MatCardModule,
         MatMenuModule,
+        MatFormFieldModule,
         MatTableModule,
         MatPaginatorModule,
         MatSortModule

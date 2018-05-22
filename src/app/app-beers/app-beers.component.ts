@@ -17,18 +17,9 @@ export class AppBeersComponent implements OnInit {
     
     displayedColumns = ['name', 'ingredients', 'abv', 'epm', 'brewery'];
 
-    constructor (private beerStoreService: BeerStoreServiceService, private afStorage: AngularFireStorage) {}
+    constructor (private beerStoreService: BeerStoreServiceService) {}
 
     ngOnInit() {
         this.dataSource = new AppBeerListDataSource(this.paginator, this.sort, this.beerStoreService);
-    }
-    
-    upload(event) {
-        // upload a file to firebase
-        const id = Math.random().toString(36).substring(2);
-        console.log(id);
-        const ref = this.afStorage.ref(id);
-        const task = ref.put(event.target.files[0]);
-        const uploadProgress = task.percentageChanges();
     }
 }
