@@ -39,4 +39,20 @@ export class BeerStoreServiceService {
         const id = dca.payload.id;
         return { id, ...data };
     }
+
+    public addBeer (beer: Beer): void {
+        const id = this.afs.createId();
+        this.storeBeerAtId(id, beer);
+    }
+
+    public updateBeer (beer: Beer): void {
+        const id = beer.id;
+        this.storeBeerAtId(id, beer);
+    }
+
+    private storeBeerAtId (id: string, beer: Beer) {
+        delete beer.id;
+        const itemsCollection = this.afs.collection<Beer>('beers');
+        itemsCollection.doc(id).set(beer);
+    }
 }

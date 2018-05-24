@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppBeerAddImageComponent } from './app-beer-add-image.component';
+import { AppBeerImageComponent } from './app-beer-image.component';
 
-describe('AppBeerAddImageComponent', () => {
-    let component: AppBeerAddImageComponent;
-    let fixture: ComponentFixture<AppBeerAddImageComponent>;
+describe('AppBeerImageComponent', () => {
+    let component: AppBeerImageComponent;
+    let fixture: ComponentFixture<AppBeerImageComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [AppBeerAddImageComponent]
+            declarations: [AppBeerImageComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppBeerAddImageComponent);
+        fixture = TestBed.createComponent(AppBeerImageComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

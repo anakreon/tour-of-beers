@@ -9,7 +9,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { 
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule 
+    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule
 } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,9 +19,10 @@ import { AppNavComponent } from './app-nav/app-nav.component';
 import { AppBeersComponent } from './app-beers/app-beers.component';
 import { AppBeerDetailComponent } from './app-beer-detail/app-beer-detail.component';
 import { environment } from '../environments/environment';
-import { AppBeerAddFormComponent } from './app-beer-add-form/app-beer-add-form.component';
-import { AppBeerAddImageComponent } from './app-beer-add-image/app-beer-add-image.component';
+import { AppBeerFormComponent } from './app-beer-form/app-beer-form.component';
+import { AppBeerImageComponent } from './app-beer-image/app-beer-image.component';
 import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
+import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
 
 @NgModule({
     declarations: [
@@ -30,9 +31,10 @@ import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
         AppNavComponent,
         AppBeersComponent,
         AppBeerDetailComponent,
-        AppBeerAddFormComponent,
-        AppBeerAddImageComponent,
-        AppBeerAddComponent
+        AppBeerFormComponent,
+        AppBeerImageComponent,
+        AppBeerAddComponent,
+        AppBeerEditComponent
     ],
     imports: [
         BrowserModule,
@@ -56,7 +58,8 @@ import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
         MatFormFieldModule,
         MatTableModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatProgressSpinnerModule
     ],
     providers: [],
     bootstrap: [ 

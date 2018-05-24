@@ -1,0 +1,2 @@
+<app-beer-form *ngIf="beer" [beer]="beer" (uploadRequest)="upload($event)" (submitRequest)="submit($event)"></app-beer-form>
+<app-beer-image *ngIf="pictureUrl" [imageSrc]="pictureUrl"></app-beer-image>

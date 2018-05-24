@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BeerStoreServiceService } from '../beer-store-service.service';
+import { AngularFireStorage } from 'angularfire2/storage';
+import { Beer } from '../app.types';
 
 @Component({
     selector: 'app-beer-detail',
@@ -10,26 +12,39 @@ import { BeerStoreServiceService } from '../beer-store-service.service';
 })
 export class AppBeerDetailComponent implements OnInit {
     
-    beer;
+    public beer: Beer;
+    public beerPictureUrl: string = '';
 
-    constructor (private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService) {}
+    constructor (
+        private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 
+        private afStorage: AngularFireStorage
+    ) {}
 
     ngOnInit () {
         this.getBeer();
     }
 
-    getBeer (): void {
+    private getBeer (): void {
         const id = this.route.snapshot.paramMap.get('id');
         this.beerStoreService.getBeer(id).subscribe((beer) => {
             this.beer = beer;
+            
+            if (this.beer.pictureId) {
+                const ref = this.afStorage.ref(this.beer.pictureId);
+                ref.getDownloadURL().subscribe((url) => {
+                    this.beerPictureUrl = url;
+                });
+            } else {
+                this.beerPictureUrl = 'assets/beer_placeholder.jpg';
+            }
         });
     }
 
-    goBack(): void {
+    public goBack(): void {
         this.location.back();
     }
 
-    edit (): void {
+    public edit (): void {
         
     }
 
