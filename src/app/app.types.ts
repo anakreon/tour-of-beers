@@ -5,4 +5,5 @@ export interface Beer {
     abv: number;
     epm: number;
     brewery: string;
+    pictureId: any;
 }

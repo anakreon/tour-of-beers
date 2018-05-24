@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Beer } from '../app.types';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
     selector: 'app-beer-add-form',
@@ -8,6 +9,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
     styleUrls: ['./app-beer-add-form.component.css']
 })
 export class AppBeerAddFormComponent {
+    picture: any;
 
     model: Beer = {
         id: '',
@@ -15,21 +17,30 @@ export class AppBeerAddFormComponent {
         ingredients: '',
         abv: 0,
         epm: 0,
-        brewery: ''
+        brewery: '',
+        pictureId: null
     };
 
     submitted = false;
 
-    constructor (private afStorage: AngularFireStorage) {}
+    constructor (private afStorage: AngularFireStorage, private afs: AngularFirestore) {}
 
-    onSubmit() { this.submitted = true; }
+    submit ($event) { 
+        this.submitted = true; 
+        
+        const id = Math.random().toString(36).substring(2);
+        this.model.pictureId = id;
+        console.log('submitting: ', this.model);
+        /*
+        const ref = this.afStorage.ref(id);
+        const task = ref.put(this.picture);
+        const uploadProgress = task.percentageChanges();
+        */
+        
+    }
 
     upload (event) {
-        // upload a file to firebase
-        const id = Math.random().toString(36).substring(2);
-        const ref = this.afStorage.ref(id);
-        const task = ref.put(event.target.files[0]);
-        const uploadProgress = task.percentageChanges();
+        this.picture = event.target.files[0];
     }
 
 }

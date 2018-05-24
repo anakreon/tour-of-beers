@@ -3,33 +3,35 @@
     <mat-card-content>
         <form class="example-form">
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Id" disabled value="">
+                <input matInput placeholder="Id" disabled [(ngModel)]="model.id" name="id">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Beer Name">
+                <input matInput placeholder="Beer Name" [(ngModel)]="model.name" name="name">
             </mat-form-field>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Beer Ingredients"></textarea>
+                <textarea matInput placeholder="Beer Ingredients" [(ngModel)]="model.ingredients" name="ingredients"></textarea>
             </mat-form-field>
             <mat-grid-list cols="2" rowHeight="100px" gutterSize="20px">
                 <mat-grid-tile>
                         <mat-form-field class="example-full-width">
-                            <input type="number" matInput placeholder="ABV">
+                            <input type="number" matInput placeholder="ABV" [(ngModel)]="model.abv" name="abv">
                         </mat-form-field>
                 </mat-grid-tile>
                 <mat-grid-tile>
                     <mat-form-field class="example-full-width">
-                        <input type="number" matInput placeholder="EPM">
+                        <input type="number" matInput placeholder="EPM" [(ngModel)]="model.epm" name="epm">
                     </mat-form-field>
                 </mat-grid-tile>
             </mat-grid-list>
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Brewery"></textarea>
+                <textarea matInput placeholder="Brewery" [(ngModel)]="model.brewery" name="brewery"></textarea>
             </mat-form-field>
-            <button mat-raised-button color="primary" onclick="document.getElementById('fileToUpload').click()">
+            <button mat-raised-button onclick="document.getElementById('fileToUpload').click()">
                 <label for="fileToUpload">Add picture</label>
             </button>
             <input id="fileToUpload" (change)="upload($event)" type="file" style="display:none;" accept=".png,.jpg">
+
+            <button mat-raised-button color="primary" (click)="submit($event)">Submit</button>
         </form>
     </mat-card-content>
 </mat-card>
