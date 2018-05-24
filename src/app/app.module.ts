@@ -11,6 +11,7 @@ import {
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatFormFieldModule,
     MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule
 } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,6 +24,7 @@ import { AppBeerFormComponent } from './app-beer-form/app-beer-form.component';
 import { AppBeerImageComponent } from './app-beer-image/app-beer-image.component';
 import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
 import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
+import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
 
 @NgModule({
     declarations: [
@@ -34,7 +36,8 @@ import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
         AppBeerFormComponent,
         AppBeerImageComponent,
         AppBeerAddComponent,
-        AppBeerEditComponent
+        AppBeerEditComponent,
+        AppNavUserComponent
     ],
     imports: [
         BrowserModule,
@@ -42,6 +45,7 @@ import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
         AppRoutingModule,
         BrowserAnimationsModule,
         LayoutModule,
+        FlexLayoutModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         AngularFireStorageModule,
