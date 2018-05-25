@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-beer-detail',
@@ -17,11 +18,15 @@ export class AppBeerDetailComponent implements OnInit {
 
     constructor (
         private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 
-        private afStorage: AngularFireStorage
+        private afStorage: AngularFireStorage, private authService: AuthService
     ) {}
 
     ngOnInit () {
         this.getBeer();
+    }
+
+    public isUserAuthenticated () {
+        return this.authService.isAuthenticated();
     }
 
     private getBeer (): void {

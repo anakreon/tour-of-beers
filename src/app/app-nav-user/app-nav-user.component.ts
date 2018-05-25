@@ -1,27 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { auth } from 'firebase/app';
-import { Observable } from 'rxjs';
-import { User } from '@firebase/auth-types';
+import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { User } from 'firebase';
 
 @Component({
     selector: 'app-nav-user',
     templateUrl: './app-nav-user.component.html',
     styleUrls: ['./app-nav-user.component.css']
 })
-export class AppNavUserComponent implements OnInit {
+export class AppNavUserComponent {
     
-    constructor (public afAuth: AngularFireAuth) { }
+    constructor (private authService: AuthService) {}
 
-    ngOnInit() {
-
+    public isUserAuthenticated () {
+        return this.authService.isAuthenticated();
     }
 
-    public login () {
-        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    public login (): void {
+        this.authService.login();
     }
-    public logout () {
-        this.afAuth.auth.signOut();
+
+    public logout (): void {
+        this.authService.logout();
+    }
+
+    public getUser (): User {
+        return this.authService.getUser();
     }
 
 }

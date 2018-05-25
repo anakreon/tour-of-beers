@@ -22,12 +22,13 @@
             <mat-form-field class="example-full-width">
                 <textarea matInput placeholder="Brewery" [(ngModel)]="beer.brewery" name="brewery"></textarea>
             </mat-form-field>
-            <button mat-raised-button onclick="document.getElementById('fileToUpload').click()">
-                <label for="fileToUpload">Add picture</label>
-            </button>
-            <input id="fileToUpload" (change)="upload($event)" type="file" style="display:none;" accept=".png,.jpg">
-
-            <button mat-raised-button color="primary" (click)="submit($event)">Submit</button>
         </form>
     </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button onclick="document.getElementById('fileToUpload').click()">
+            <label for="fileToUpload">Add picture</label>
+        </button>
+        <input id="fileToUpload" (change)="upload($event)" type="file" style="display:none;" accept=".png,.jpg">
+        <button mat-raised-button color="primary" (click)="submit($event)">Submit</button>
+    </mat-card-actions>
 </mat-card>

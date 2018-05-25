@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth-guard.service';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
@@ -9,7 +10,7 @@ const routes: Routes = [
     { path: 'dashboard', component: AppDashboardComponent },
     { path: 'beers', component: AppBeersComponent },
     { path: 'detail/:id', component: AppBeerDetailComponent },
-    { path: 'edit/:id', component: AppBeerEditComponent },
+    { path: 'edit/:id', component: AppBeerEditComponent, canActivate: [ AuthGuardService ] },
     { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
     { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
 ];

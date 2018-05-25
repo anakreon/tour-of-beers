@@ -1,7 +1,7 @@
-<mat-card *ngIf="afAuth.user | async as user; else showLogin" class='login-card' [matMenuTriggerFor]="appMenu">
+<mat-card *ngIf="isUserAuthenticated(); else showLogin" class='login-card' [matMenuTriggerFor]="appMenu">
     <mat-card-header>
-        <img mat-card-avatar [src]="user.photoURL" />
-        <mat-card-title>{{ user.displayName }}</mat-card-title>
+        <img mat-card-avatar [src]="getUser().photoURL" />
+        <mat-card-title>{{ getUser().displayName }}</mat-card-title>
         <mat-card-subtitle>asdf</mat-card-subtitle>
     </mat-card-header>
 </mat-card>
@@ -9,5 +9,5 @@
     <button mat-menu-item (click)="logout()">Logout</button>
 </mat-menu>
 <ng-template #showLogin>
-    <button *ngIf="!user" mat-raised-button color="accent" (click)="login()">Sign In</button>
+    <button mat-raised-button color="accent" (click)="login()">Sign In</button>
 </ng-template>
