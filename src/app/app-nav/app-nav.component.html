@@ -3,7 +3,7 @@
         [opened]="!(isHandset | async)!.matches">
         <mat-toolbar color="primary">Menu</mat-toolbar>
         <ng-container *ngIf="isUserAuthenticated()">
-            <button class='add-button' mat-mini-fab color="accent" [matMenuTriggerFor]="addBeerMenu">+</button>
+            <button class='add-button pulse' mat-mini-fab color="accent" [matMenuTriggerFor]="addBeerMenu">+</button>
             <mat-menu #addBeerMenu="matMenu" yPosition="below" xPosition="after" [overlapTrigger]="false" class="add-beer-menu">
                 <app-beer-add-card (closeMenu)="closeBeerMenu()"></app-beer-add-card>
             </mat-menu>

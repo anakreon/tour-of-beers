@@ -18,3 +18,4 @@
         <button mat-button (click)="edit()" routerLink="/edit/{{beer.id}}" *ngIf="isUserAuthenticated()">EDIT</button>
     </mat-card-actions>
 </mat-card>
+<mat-slider step="1" min="0" max="100" vertical="verticalSlider" [(ngModel)]="beerRating"></mat-slider>

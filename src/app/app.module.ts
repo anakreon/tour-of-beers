@@ -9,7 +9,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { 
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule
+    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatSliderModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -41,9 +41,9 @@ import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.c
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         FormsModule,
         AppRoutingModule,
-        BrowserAnimationsModule,
         LayoutModule,
         FlexLayoutModule,
         AngularFireModule.initializeApp(environment.firebase),
@@ -63,7 +63,8 @@ import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.c
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatSliderModule
     ],
     providers: [],
     bootstrap: [ 

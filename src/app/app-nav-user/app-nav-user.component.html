@@ -2,7 +2,7 @@
     <mat-card-header>
         <img mat-card-avatar [src]="getUser().photoURL" />
         <mat-card-title>{{ getUser().displayName }}</mat-card-title>
-        <mat-card-subtitle>asdf</mat-card-subtitle>
+        <mat-card-subtitle>{{ getUser().email }} </mat-card-subtitle>
     </mat-card-header>
 </mat-card>
 <mat-menu #appMenu="matMenu" yPosition="below" xPosition="before" [overlapTrigger]="false">

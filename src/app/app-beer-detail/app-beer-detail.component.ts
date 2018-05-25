@@ -15,6 +15,8 @@ export class AppBeerDetailComponent implements OnInit {
     
     public beer: Beer;
     public beerPictureUrl: string = '';
+    public beerRating: number;
+    public verticalSlider = true;
 
     constructor (
         private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 

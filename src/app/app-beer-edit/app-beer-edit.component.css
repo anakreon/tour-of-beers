@@ -1,0 +1,11 @@
+.edit-container {
+    display: flex;
+}
+
+.beer-form {
+    flex: 2;
+}
+
+.beer-image {
+    flex: 3;
+}

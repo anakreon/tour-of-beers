@@ -10,3 +10,9 @@ export interface Beer extends BeerBase {
     brewery: string;
     pictureId: any;
 }
+
+export interface BeerRating {
+    beerId: string;
+    userId: string;
+    rating: number;
+}
