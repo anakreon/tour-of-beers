@@ -22,9 +22,9 @@ import { AppBeerDetailComponent } from './app-beer-detail/app-beer-detail.compon
 import { environment } from '../environments/environment';
 import { AppBeerFormComponent } from './app-beer-form/app-beer-form.component';
 import { AppBeerImageComponent } from './app-beer-image/app-beer-image.component';
-import { AppBeerAddComponent } from './app-beer-add/app-beer-add.component';
 import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
 import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
+import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.component';
 
 @NgModule({
     declarations: [
@@ -35,9 +35,9 @@ import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
         AppBeerDetailComponent,
         AppBeerFormComponent,
         AppBeerImageComponent,
-        AppBeerAddComponent,
         AppBeerEditComponent,
-        AppNavUserComponent
+        AppNavUserComponent,
+        AppBeerAddCardComponent
     ],
     imports: [
         BrowserModule,

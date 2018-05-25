@@ -1,4 +1,4 @@
-import { Beer } from './app.types';
+import { Beer, BeerBase } from './app.types';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -40,19 +40,18 @@ export class BeerStoreServiceService {
         return { id, ...data };
     }
 
-    public addBeer (beer: Beer): void {
-        const id = this.afs.createId();
-        this.storeBeerAtId(id, beer);
+    public addBeer (beer: BeerBase): Promise<string>  {
+        beer.id = this.afs.createId();
+        return this.storeBeerAtId(beer).then(() => beer.id);
     }
 
-    public updateBeer (beer: Beer): void {
-        const id = beer.id;
-        this.storeBeerAtId(id, beer);
+    public updateBeer (beer: Beer): Promise<void> {
+        return this.storeBeerAtId(beer);
     }
 
-    private storeBeerAtId (id: string, beer: Beer) {
-        delete beer.id;
-        const itemsCollection = this.afs.collection<Beer>('beers');
-        itemsCollection.doc(id).set(beer);
+    private storeBeerAtId (beer: BeerBase): Promise<void> {
+        const { id, ...beerWithoutId } = beer;
+        const itemsCollection = this.afs.collection<BeerBase>('beers');
+        return itemsCollection.doc(id).set(beerWithoutId);
     }
 }

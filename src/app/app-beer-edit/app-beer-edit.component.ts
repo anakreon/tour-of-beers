@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { Beer } from '../app.types';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'app-beer-edit',
@@ -18,16 +19,20 @@ export class AppBeerEditComponent implements OnInit {
     beer: Beer;
 
     constructor (
-        private route: ActivatedRoute, private afStorage: AngularFireStorage, private beerStoreService: BeerStoreServiceService
+        private route: ActivatedRoute, private router: Router, private afStorage: AngularFireStorage, 
+        private beerStoreService: BeerStoreServiceService
     ) {}
 
     ngOnInit () {
-        this.getBeer();
-    }
+        this.route.paramMap.pipe(
+            switchMap((params) => {
+                const beerId = params.get('id');
+                return this.beerStoreService.getBeer(beerId);
+            })
+        )
+        .subscribe((beer: Beer) => {
+            this.initState();
 
-    private getBeer (): void {
-        const id = this.route.snapshot.paramMap.get('id');
-        this.beerStoreService.getBeer(id).subscribe((beer) => {
             this.beer = beer;
             
             if (this.beer.pictureId) {
@@ -39,10 +44,24 @@ export class AppBeerEditComponent implements OnInit {
         });
     }
 
+    private initState () {
+        this.picture = null;
+        this.pictureUrl = null;
+        this.pictureHasChanged = false;
+    }
+
     public submit (beer: Beer) { 
-        this.uploadPicture().then(() => {
-            this.beerStoreService.updateBeer(beer);
-        });
+        this.uploadPicture()
+            .then(() => {
+                return this.beerStoreService.updateBeer(beer);
+            })
+            .then(() => {
+                this.navigateToBeerdetailPage(beer.id);
+            });
+    }
+
+    private navigateToBeerdetailPage (beerId) {
+        this.router.navigate(['/detail/' + beerId]);
     }
     
     private uploadPicture (): Promise<void> {

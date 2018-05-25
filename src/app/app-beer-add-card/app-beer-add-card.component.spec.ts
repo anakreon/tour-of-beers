@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppBeerAddComponent } from './app-beer-add.component';
+import { AppBeerAddCardComponent } from './app-beer-add-card.component';
 
-describe('AppBeerAddComponent', () => {
-    let component: AppBeerAddComponent;
-    let fixture: ComponentFixture<AppBeerAddComponent>;
+describe('AppBeerAddCardComponent', () => {
+    let component: AppBeerAddCardComponent;
+    let fixture: ComponentFixture<AppBeerAddCardComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [AppBeerAddComponent]
+            declarations: [AppBeerAddCardComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppBeerAddComponent);
+        fixture = TestBed.createComponent(AppBeerAddCardComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });
