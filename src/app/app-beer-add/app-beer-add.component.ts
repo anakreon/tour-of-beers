@@ -51,6 +51,14 @@ export class AppBeerAddComponent {
 
     public upload (file) {
         this.picture = file;
+
+        if (FileReader && file) {
+            const fr = new FileReader();
+            fr.onload = () => {
+                this.pictureUrl = fr.result;
+            };
+            fr.readAsDataURL(file);
+        }
     }
 
 }

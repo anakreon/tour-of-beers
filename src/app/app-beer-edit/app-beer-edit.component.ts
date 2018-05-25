@@ -71,6 +71,14 @@ export class AppBeerEditComponent implements OnInit {
     public upload (file) {
         this.picture = file;
         this.pictureHasChanged = true;
+
+        if (FileReader && file) {
+            const fr = new FileReader();
+            fr.onload = () => {
+                this.pictureUrl = fr.result;
+            };
+            fr.readAsDataURL(file);
+        }
     }
 
 }

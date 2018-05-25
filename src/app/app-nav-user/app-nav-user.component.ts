@@ -17,12 +17,9 @@ export class AppNavUserComponent implements OnInit {
 
     }
 
-    public login() {
-        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-            .then((result) => console.log('signed in :', result))
-            .catch((error) => console.log(error));
+    public login () {
+        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
     }
-
     public logout () {
         this.afAuth.auth.signOut();
     }
