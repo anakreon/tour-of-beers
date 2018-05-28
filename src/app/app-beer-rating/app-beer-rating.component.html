@@ -1,0 +1,6 @@
+Total:
+<ngb-rating [(rate)]="totalRating" readonly="readonly"></ngb-rating>
+<ng-container *ngIf="myRatingLoaded">
+    Mine:
+    <ngb-rating [(rate)]="myRating" (rateChange)="updateRating()"></ngb-rating>
+</ng-container>

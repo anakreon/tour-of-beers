@@ -5,7 +5,6 @@ import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
 import { AuthService } from '../auth.service';
-import { } from '@types/googlemaps';
 
 @Component({
     selector: 'app-beer-detail',
@@ -15,8 +14,6 @@ import { } from '@types/googlemaps';
 export class AppBeerDetailComponent implements OnInit {
     public beer: Beer;
     public beerPictureUrl: string = '';
-    public beerRating: number;
-    public verticalSlider = true;
 
     constructor (
         private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 
@@ -46,11 +43,7 @@ export class AppBeerDetailComponent implements OnInit {
         });
     }
     
-    public goBack(): void {
+    public goBack (): void {
         this.location.back();
-    }
-
-    public edit (): void {
-        
     }
 }

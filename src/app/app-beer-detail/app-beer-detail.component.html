@@ -1,3 +1,4 @@
+<app-beer-rating *ngIf="beer" [beerId]="beer.id"></app-beer-rating>
 <mat-card class="beer-card" *ngIf="beer">
     <mat-card-header>
         <div mat-card-avatar class="beer-header-image"></div>
@@ -6,17 +7,12 @@
     </mat-card-header>
     <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
     <mat-card-content>
-        <p>
-            {{ beer.ingredients }}
-        </p>
-        <p>
-            {{ beer.brewery }}
-        </p>
+        <p>{{ beer.ingredients }}</p>
+        <p>{{ beer.brewery }}</p>
     </mat-card-content>
     <mat-card-actions>
         <button mat-button (click)="goBack()">BACK</button>
-        <button mat-button (click)="edit()" routerLink="/edit/{{beer.id}}" *ngIf="isUserAuthenticated()">EDIT</button>
+        <button mat-button routerLink="/edit/{{beer.id}}" *ngIf="isUserAuthenticated()">EDIT</button>
     </mat-card-actions>
     <!-- <app-map [address]="beer.brewery"></app-map> -->
 </mat-card>
-<mat-slider step="1" min="0" max="100" vertical="verticalSlider" [(ngModel)]="beerRating"></mat-slider>

@@ -13,6 +13,8 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
@@ -27,6 +29,7 @@ import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
 import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.component';
 import { AppMapComponent } from './app-map/app-map.component';
 import { AppIntroComponent } from './app-intro/app-intro.component';
+import { AppBeerRatingComponent } from './app-beer-rating/app-beer-rating.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +44,8 @@ import { AppIntroComponent } from './app-intro/app-intro.component';
         AppNavUserComponent,
         AppBeerAddCardComponent,
         AppMapComponent,
-        AppIntroComponent
+        AppIntroComponent,
+        AppBeerRatingComponent
     ],
     imports: [
         BrowserModule,
@@ -68,7 +72,8 @@ import { AppIntroComponent } from './app-intro/app-intro.component';
         MatPaginatorModule,
         MatSortModule,
         MatProgressSpinnerModule,
-        MatSliderModule
+        MatSliderModule,
+        NgbModule.forRoot()
     ],
     providers: [],
     bootstrap: [ 

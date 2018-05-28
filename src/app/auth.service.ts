@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { auth, User } from 'firebase';
+import { Observable } from '@firebase/util';
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -28,5 +30,11 @@ export class AuthService {
 
     public getUser (): User {
         return this.user;
+    }
+
+    public getUserId (): any {
+        return this.afAuth.user.pipe(
+            map((user: User) => user && user.uid)
+        );
     }
 }
