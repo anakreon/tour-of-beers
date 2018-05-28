@@ -26,6 +26,7 @@ import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
 import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
 import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.component';
 import { AppMapComponent } from './app-map/app-map.component';
+import { AppIntroComponent } from './app-intro/app-intro.component';
 
 @NgModule({
     declarations: [
@@ -39,7 +40,8 @@ import { AppMapComponent } from './app-map/app-map.component';
         AppBeerEditComponent,
         AppNavUserComponent,
         AppBeerAddCardComponent,
-        AppMapComponent
+        AppMapComponent,
+        AppIntroComponent
     ],
     imports: [
         BrowserModule,

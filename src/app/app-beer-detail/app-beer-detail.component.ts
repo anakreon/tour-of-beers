@@ -46,7 +46,6 @@ export class AppBeerDetailComponent implements OnInit {
         });
     }
     
-
     public goBack(): void {
         this.location.back();
     }
