@@ -25,6 +25,7 @@ import { AppBeerImageComponent } from './app-beer-image/app-beer-image.component
 import { AppBeerEditComponent } from './app-beer-edit/app-beer-edit.component';
 import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
 import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.component';
+import { AppMapComponent } from './app-map/app-map.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.c
         AppBeerImageComponent,
         AppBeerEditComponent,
         AppNavUserComponent,
-        AppBeerAddCardComponent
+        AppBeerAddCardComponent,
+        AppMapComponent
     ],
     imports: [
         BrowserModule,

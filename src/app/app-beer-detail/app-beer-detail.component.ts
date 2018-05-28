@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
 import { AuthService } from '../auth.service';
+import { } from '@types/googlemaps';
 
 @Component({
     selector: 'app-beer-detail',
@@ -12,7 +13,6 @@ import { AuthService } from '../auth.service';
     styleUrls: ['./app-beer-detail.component.css']
 })
 export class AppBeerDetailComponent implements OnInit {
-    
     public beer: Beer;
     public beerPictureUrl: string = '';
     public beerRating: number;
@@ -33,9 +33,8 @@ export class AppBeerDetailComponent implements OnInit {
 
     private getBeer (): void {
         const id = this.route.snapshot.paramMap.get('id');
-        this.beerStoreService.getBeer(id).subscribe((beer) => {
+        this.beerStoreService.getBeer(id).subscribe((beer: Beer) => {
             this.beer = beer;
-            
             if (this.beer.pictureId) {
                 const ref = this.afStorage.ref(this.beer.pictureId);
                 ref.getDownloadURL().subscribe((url) => {
@@ -46,6 +45,7 @@ export class AppBeerDetailComponent implements OnInit {
             }
         });
     }
+    
 
     public goBack(): void {
         this.location.back();
@@ -54,5 +54,4 @@ export class AppBeerDetailComponent implements OnInit {
     public edit (): void {
         
     }
-
 }
