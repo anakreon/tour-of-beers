@@ -1,0 +1,12 @@
+<mat-card class="beer-card" *ngIf="beer">
+    <mat-card-header>
+        <div mat-card-avatar class="beer-header-image"></div>
+        <mat-card-title>{{ beer.name }}</mat-card-title>
+        <mat-card-subtitle>epm: {{ beer.epm }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
+    <mat-card-content>
+        <p>{{ beer.ingredients }}</p>
+        <p>{{ beer.brewery }}</p>
+    </mat-card-content>
+</mat-card>
