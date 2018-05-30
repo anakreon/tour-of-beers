@@ -72,7 +72,7 @@ export class AppBeerEditComponent implements OnInit {
     }
 
     private updatePictureUrl (pictureId: string) {
-        this.beerImageService.getDownloadUrl(pictureId).then((url) => {
+        this.beerImageService.getDownloadUrlOrPlaceholder(pictureId).then((url) => {
             this.pictureUrl = url;
         });
     }

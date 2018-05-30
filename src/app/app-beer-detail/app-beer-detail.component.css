@@ -6,3 +6,33 @@
     background-image: url('../../assets/beer_placeholder.jpg');
     background-size: cover;
 }
+
+.beer-container {
+    display: flex;
+}
+
+.detail-card {
+    min-width: 400px;
+}
+
+.beer-rating {
+    margin-bottom: 50px;
+}
+
+.description {
+    display: inline-block;
+    width: 30%;
+}
+
+.rating {
+    color: grey;
+    display: inline-block;
+    width: 60%;
+    margin-left: 10%;
+    text-align: right;
+}
+
+.description ul {
+    list-style: none;
+    padding: 0px;
+}

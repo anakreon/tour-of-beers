@@ -8,18 +8,15 @@ import { Beer } from '../app.types';
     styleUrls: ['./app-dashboard-card.component.css']
 })
 export class AppDashboardCardComponent implements OnInit {
-
     @Input() beer: Beer;
     public beerPictureUrl: string;
 
     constructor (private beerImageService: BeerImageService) { }
 
     ngOnInit () {
-        if (this.beer.pictureId) {
-            this.beerImageService.getDownloadUrl(this.beer.pictureId).then((url) => {
-                this.beerPictureUrl = url;
-            });
-        }
+        this.beerImageService.getDownloadUrlOrPlaceholder(this.beer.pictureId).then((url) => {
+            this.beerPictureUrl = url;
+        });
     }
 
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction, Action, DocumentSnapshot } from 'angularfire2/firestore';
-import { BeerRating } from './app.types';
+import { BeerRating, BeerRatingResult } from './app.types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -25,14 +25,20 @@ export class BeerRatingService {
         return data ? data.rating : 0;
     }
 
-    public getBeerRating (beerId: string): Observable<number> {
+    public getBeerRating (beerId: string): Observable<BeerRatingResult> {
         return this.getBeerRatings(beerId).pipe(
             map((beerRatings: BeerRating[]) => {
                 if (beerRatings.length) {
                     const sum = beerRatings.reduce((accumulator, ratingObject) => accumulator + ratingObject.rating, 0);
-                    return sum / beerRatings.length;
+                    return {
+                        count: beerRatings.length,
+                        rating: sum / beerRatings.length
+                    };
                 } else {
-                    return 0;
+                    return {
+                        count: 0,
+                        rating: 0
+                    };
                 }
             })
         );

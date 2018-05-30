@@ -7,6 +7,7 @@ export interface Beer extends BeerBase {
     ingredients: string;
     abv: number;
     epm: number;
+    style: string;
     brewery: string;
     pictureId: any;
 }
@@ -15,5 +16,10 @@ export interface BeerRating {
     id?: string;
     beerId: string;
     userId: string;
+    rating: number;
+}
+
+export interface BeerRatingResult {
+    count: number;
     rating: number;
 }

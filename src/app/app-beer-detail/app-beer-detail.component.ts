@@ -5,6 +5,7 @@ import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
 import { AuthService } from '../auth.service';
+import { BeerImageService } from '../beer-image.service';
 
 @Component({
     selector: 'app-beer-detail',
@@ -17,7 +18,7 @@ export class AppBeerDetailComponent implements OnInit {
 
     constructor (
         private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 
-        private afStorage: AngularFireStorage, private authService: AuthService
+        private beerImageService: BeerImageService, private authService: AuthService
     ) {}
 
     ngOnInit () {
@@ -32,14 +33,9 @@ export class AppBeerDetailComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('id');
         this.beerStoreService.getBeer(id).subscribe((beer: Beer) => {
             this.beer = beer;
-            if (this.beer.pictureId) {
-                const ref = this.afStorage.ref(this.beer.pictureId);
-                ref.getDownloadURL().subscribe((url) => {
-                    this.beerPictureUrl = url;
-                });
-            } else {
-                this.beerPictureUrl = 'assets/beer_placeholder.jpg';
-            }
+            this.beerImageService.getDownloadUrlOrPlaceholder(this.beer.pictureId).then((url) => {
+                this.beerPictureUrl = url;
+            });
         });
     }
     

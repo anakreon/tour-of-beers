@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppBeerRatingComponent } from './app-beer-rating.component';
+import { AppBeerRatingViewComponent } from './app-beer-rating-view.component';
 
 describe('AppBeerRatingComponent', () => {
-    let component: AppBeerRatingComponent;
-    let fixture: ComponentFixture<AppBeerRatingComponent>;
+    let component: AppBeerRatingViewComponent;
+    let fixture: ComponentFixture<AppBeerRatingViewComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [AppBeerRatingComponent]
+            declarations: [AppBeerRatingViewComponent]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AppBeerRatingComponent);
+        fixture = TestBed.createComponent(AppBeerRatingViewComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

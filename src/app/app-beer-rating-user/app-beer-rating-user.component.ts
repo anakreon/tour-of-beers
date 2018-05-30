@@ -1,27 +1,21 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { BeerStoreServiceService } from '../beer-store-service.service';
 import { BeerRatingService } from '../beer-rating.service';
 import { AuthService } from '../auth.service';
 
 @Component({
-    selector: 'app-beer-rating',
-    templateUrl: './app-beer-rating.component.html',
-    styleUrls: ['./app-beer-rating.component.css']
+    selector: 'app-beer-rating-user',
+    templateUrl: './app-beer-rating-user.component.html',
+    styleUrls: ['./app-beer-rating-user.component.css']
 })
-export class AppBeerRatingComponent implements OnInit {
+export class AppBeerRatingUserComponent implements OnInit {
     @Input() beerId: string;
-    public myRating: number;
-    public totalRating: number;
     private userId: string;
+    public myRating: number;
     public myRatingLoaded = false;
 
     constructor (private beerRatingService: BeerRatingService, private authService: AuthService) {}
 
     ngOnInit () {
-        this.beerRatingService.getBeerRating(this.beerId).subscribe((rating) => {
-            this.totalRating = rating;
-        });
-
         this.authService.getUserId().subscribe((userId) => {
             if (userId) {
                 this.userId = userId;

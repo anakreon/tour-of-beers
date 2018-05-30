@@ -14,7 +14,16 @@ export class BeerImageService {
         return ref.put(picture).then(() => pictureId);
     }
 
-    public getDownloadUrl (pictureId: string): Promise<string> {
+    
+    public getDownloadUrlOrPlaceholder (pictureId: string): Promise<string> {
+        if (pictureId) {
+            return this.getDownloadUrl(pictureId);
+        } else {
+            return Promise.resolve('assets/beer_placeholder.jpg');
+        }
+    }
+    
+    private getDownloadUrl (pictureId: string): Promise<string> {
         const ref = this.afStorage.ref(pictureId);
         return ref.getDownloadURL().toPromise();
     }

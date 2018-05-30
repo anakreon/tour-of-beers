@@ -29,7 +29,8 @@ import { AppNavUserComponent } from './app-nav-user/app-nav-user.component';
 import { AppBeerAddCardComponent } from './app-beer-add-card/app-beer-add-card.component';
 import { AppMapComponent } from './app-map/app-map.component';
 import { AppBeerCarouselComponent } from './app-beer-carousel/app-beer-carousel.component';
-import { AppBeerRatingComponent } from './app-beer-rating/app-beer-rating.component';
+import { AppBeerRatingViewComponent } from './app-beer-rating-view/app-beer-rating-view.component';
+import { AppBeerRatingUserComponent } from './app-beer-rating-user/app-beer-rating-user.component';
 import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-card.component';
 
 @NgModule({
@@ -46,7 +47,8 @@ import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-ca
         AppBeerAddCardComponent,
         AppMapComponent,
         AppBeerCarouselComponent,
-        AppBeerRatingComponent,
+        AppBeerRatingViewComponent,
+        AppBeerRatingUserComponent,
         AppDashboardCardComponent
     ],
     imports: [
