@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BeerDashboardService } from '../beer-dashboard.service';
+import { Observable } from 'rxjs';
+import { Beer } from '../app.types';
 
 @Component({
     selector: 'app-dashboard',
     templateUrl: './app-dashboard.component.html',
     styleUrls: ['./app-dashboard.component.css']
 })
-export class AppDashboardComponent {
-    beers = [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
-    ];
+export class AppDashboardComponent implements OnInit {
+    public beers: Observable<Beer[]>;
+
+    constructor (private deerDashboardService: BeerDashboardService) {}
+
+    ngOnInit () {
+        this.beers = this.deerDashboardService.getDashboardBeers();
+    }
+    
 }

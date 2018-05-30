@@ -1,14 +1,24 @@
 <div class="grid-container">
     <mat-grid-list cols="6" rowHeight="350px">
         <mat-grid-tile colspan="3" rowspan="1">
-            <mat-card class="dashboard-card carousel-card">
+            <mat-card class="carousel-card">
                 <mat-card-content class="dashboard-card-content">
                     <app-beer-carousel></app-beer-carousel>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>
-        <mat-grid-tile *ngFor="let beer of beers" colspan="1" rowspan="1">
-            <app-dashboard-card beer="beer"></app-dashboard-card>
+        <mat-grid-tile colspan="3" rowspan="1">
+            <mat-card class="carousel-card">
+                <mat-card-content class="dashboard-card-content">
+                    some content
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <h3>Top Beers</h3>
+    <mat-grid-list cols="6" rowHeight="350px">
+        <mat-grid-tile *ngFor="let beer of beers | async" colspan="1" rowspan="1">
+            <app-dashboard-card class="dashboard-card" [beer]="beer"></app-dashboard-card>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BeerImageService } from '../beer-image.service';
+import { Beer } from '../app.types';
 
 @Component({
     selector: 'app-dashboard-card',
@@ -7,16 +9,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AppDashboardCardComponent implements OnInit {
 
-    @Input() beer = {
-        ingredients: 'xxx',
-        abv: 1,
-        epm: 2,
-        brewery: 'asfd'
-    }
+    @Input() beer: Beer;
+    public beerPictureUrl: string;
 
-    constructor() { }
+    constructor (private beerImageService: BeerImageService) { }
 
-    ngOnInit() {
+    ngOnInit () {
+        if (this.beer.pictureId) {
+            this.beerImageService.getDownloadUrl(this.beer.pictureId).then((url) => {
+                this.beerPictureUrl = url;
+            });
+        }
     }
 
 }

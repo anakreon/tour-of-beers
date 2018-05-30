@@ -3,6 +3,7 @@
 }
 
 .dashboard-card {
+    width: 90%;
     position: absolute;
     top: 15px;
     left: 15px;
@@ -27,4 +28,8 @@
 
 .dashboard-card-content {
     text-align: center;
+}
+
+::ng-deep .dashboard-tile > figure.mat-figure {
+    align-items: start !important;
 }

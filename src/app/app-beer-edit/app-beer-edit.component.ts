@@ -4,6 +4,7 @@ import { AngularFireStorage } from 'angularfire2/storage';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { Beer } from '../app.types';
 import { switchMap } from 'rxjs/operators';
+import { BeerImageService } from '../beer-image.service';
 
 @Component({
     selector: 'app-beer-edit',
@@ -19,8 +20,8 @@ export class AppBeerEditComponent implements OnInit {
     beer: Beer;
 
     constructor (
-        private route: ActivatedRoute, private router: Router, private afStorage: AngularFireStorage, 
-        private beerStoreService: BeerStoreServiceService
+        private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreServiceService, 
+        private beerImageService: BeerImageService
     ) {}
 
     ngOnInit () {
@@ -32,14 +33,9 @@ export class AppBeerEditComponent implements OnInit {
         )
         .subscribe((beer: Beer) => {
             this.initState();
-
             this.beer = beer;
-            
             if (this.beer.pictureId) {
-                const ref = this.afStorage.ref(this.beer.pictureId);
-                ref.getDownloadURL().subscribe((url) => {
-                    this.pictureUrl = url;
-                });
+                this.updatePictureUrl(this.beer.pictureId);
             }
         });
     }
@@ -65,26 +61,20 @@ export class AppBeerEditComponent implements OnInit {
     }
     
     private uploadPicture (): Promise<void> {
-        return new Promise((resolve, reject) => {
-            if (this.pictureHasChanged && this.picture) {
-                this.beer.pictureId = this.beer.pictureId || this.generatePictureId();
-                const ref = this.afStorage.ref(this.beer.pictureId);
-                const task = ref.put(this.picture);
-                task.then(() => {
-                    ref.getDownloadURL().subscribe((url) => {
-                        this.pictureUrl = url;
-                    });
-                    resolve();
-                })
-                const uploadProgress = task.percentageChanges();
-            } else {
-                resolve();
-            }
-        });
+        if (this.pictureHasChanged && this.picture) {
+            this.beerImageService.uploadPicture(this.beer.pictureId, this.picture).then((pictureId) => {
+                this.beer.pictureId = pictureId;
+                this.updatePictureUrl(pictureId);
+            });
+        } else {
+            return Promise.resolve();
+        }
     }
 
-    private generatePictureId (): string {
-        return Math.random().toString(36).substring(2);
+    private updatePictureUrl (pictureId: string) {
+        this.beerImageService.getDownloadUrl(pictureId).then((url) => {
+            this.pictureUrl = url;
+        });
     }
 
     public upload (file) {
