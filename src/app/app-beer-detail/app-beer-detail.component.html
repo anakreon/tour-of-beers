@@ -19,8 +19,9 @@
                 <app-beer-rating-view [beerId]="beer.id"></app-beer-rating-view>
             </div>
         </mat-card-content>
-        <mat-card-actions>
-            <button mat-button routerLink="/edit/{{beer.id}}" *ngIf="isUserAuthenticated()">EDIT</button>
+        <mat-card-actions *ngIf="isUserAuthenticated()">
+            <button mat-raised-button routerLink="/edit/{{beer.id}}">EDIT</button>
+            <button mat-raised-button color="warn" (click)="deleteBeer()">DELETE</button>
         </mat-card-actions>
     </mat-card>
     <mat-card class="detail-card">

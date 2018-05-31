@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { MatMenuTrigger } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../auth.service';
+import { NotificationService } from '../notification.service';
 
 @Component({
     selector: 'app-nav',
@@ -13,15 +14,21 @@ import { AuthService } from '../auth.service';
 export class AppNavComponent {
     @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
     isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+    
+    constructor (
+        private breakpointObserver: BreakpointObserver, private authService: AuthService, private notificationService: NotificationService
+    ) {}
 
     closeBeerMenu () {
         this.trigger.closeMenu();
     }
 
-    constructor (private breakpointObserver: BreakpointObserver, private authService: AuthService) {}
-
     public isUserAuthenticated (): boolean {
         return this.authService.isAuthenticated();
+    }
+
+    public getAlertMessage (): string {
+        return this.notificationService.getAlertMessage();
     }
     
 }

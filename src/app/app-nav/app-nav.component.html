@@ -22,6 +22,7 @@
             <span class="fill-remaining-space"></span>
             <app-nav-user></app-nav-user>
         </mat-toolbar>
+        <ngb-alert *ngIf="getAlertMessage()" type="danger" [dismissible]="false">{{ getAlertMessage() }}</ngb-alert>
         <app-loading-bar></app-loading-bar>
         <router-outlet></router-outlet>
     </mat-sidenav-content>

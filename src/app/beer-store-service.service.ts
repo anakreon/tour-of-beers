@@ -34,6 +34,10 @@ export class BeerStoreServiceService {
         );
     }
 
+    public deleteBeer (beerId: string): Promise<void> {
+        return this.afs.doc<Beer>('beers/' + beerId).delete();
+    }
+
     private buildBeerObjectForChangeAction (dca: DocumentChangeAction<{}>): Beer {
         const data = dca.payload.doc.data() as Beer;
         const id = dca.payload.doc.id;

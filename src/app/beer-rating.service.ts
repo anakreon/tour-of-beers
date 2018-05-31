@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentChangeAction, Action, DocumentSnapshot } from 'angularfire2/firestore';
-import { BeerRating, BeerRatingResult } from './app.types';
+import { BeerRating, BeerRatingResult, Beer } from './app.types';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -23,6 +23,14 @@ export class BeerRatingService {
     private getRatingValueFromBeerObject (dca: Action<DocumentSnapshot<{}>>): number {
         const data = dca.payload.data() as BeerRating;
         return data ? data.rating : 0;
+    }
+
+    public deleteRatingsForBeer (beerId: string): Promise<void> {
+        return this.afs.collection('beer-ratings').ref.where('beerId', '==', beerId).get().then((snapshot) => {
+            const batch = this.afs.firestore.batch();
+            snapshot.forEach((value) => batch.delete(value.ref));
+            return batch.commit();
+        });
     }
 
     public getBeerRating (beerId: string): Observable<BeerRatingResult> {

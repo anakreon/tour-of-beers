@@ -8,8 +8,8 @@
 }
 
 .add-button {
-    right: 10px;
-    top: 12px;
+    right: 20px;
+    top: 45px;
     position: absolute;
 }
 
@@ -40,4 +40,10 @@
         -moz-box-shadow: 0 0 0 0 rgba(0, 38, 255, 0);
         box-shadow: 0 0 0 0 rgba(0, 38, 255, 0);
     }
+}
+
+::ng-deep .alert {
+    padding: 0.1rem 1.0rem;
+    margin-bottom: 0px;
+    margin: 5px;
 }

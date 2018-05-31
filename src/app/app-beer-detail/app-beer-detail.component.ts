@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
 import { AuthService } from '../auth.service';
 import { BeerImageService } from '../beer-image.service';
 import { LoadingService } from '../loading.service';
+import { BeerRatingService } from '../beer-rating.service';
 
 @Component({
     selector: 'app-beer-detail',
@@ -17,8 +18,9 @@ export class AppBeerDetailComponent implements OnInit {
     public beerPictureUrl: string = '';
 
     constructor (
-        private route: ActivatedRoute, private beerStoreService: BeerStoreServiceService, 
-        private beerImageService: BeerImageService, private authService: AuthService, private loadingService: LoadingService
+        private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreServiceService,
+        private beerImageService: BeerImageService, private authService: AuthService, private loadingService: LoadingService,
+        private beerRatingService: BeerRatingService
     ) {}
 
     ngOnInit () {
@@ -27,6 +29,21 @@ export class AppBeerDetailComponent implements OnInit {
 
     public isUserAuthenticated () {
         return this.authService.isAuthenticated();
+    }
+
+    public deleteBeer () {
+        const unsetLoading = this.loadingService.setLoading();
+        this.beerRatingService.deleteRatingsForBeer(this.beer.id)
+            .then(() => this.beerImageService.deletePictureForBeer(this.beer.pictureId))
+            .then(() => this.beerStoreService.deleteBeer(this.beer.id))
+            .then(() => {
+                unsetLoading();
+                this.navigateToDashboard();
+            })
+            .catch((error) => console.log(error));
+    }
+    private navigateToDashboard () {
+        this.router.navigate(['/dashboard']);
     }
 
     private getBeer (): void {

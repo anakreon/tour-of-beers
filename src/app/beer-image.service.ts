@@ -14,6 +14,14 @@ export class BeerImageService {
         return ref.put(picture).then(() => pictureId);
     }
 
+    public deletePictureForBeer (pictureId: string): Promise<void> {
+        if (pictureId) {
+            const ref = this.afStorage.ref(pictureId);
+            return ref.delete().toPromise();
+        } else {
+            return Promise.resolve();
+        }
+    }
     
     public getDownloadUrlOrPlaceholder (pictureId: string): Promise<string> {
         if (pictureId) {
