@@ -44,9 +44,13 @@ export class BeerRatingService {
         );
     }
 
-    /*public getBeerIdsOrderedByRating (limit: number):  {
-
-    }*/
+    public getAllBeerRatings (): Observable<BeerRating[]> {
+        return this.afs.collection('beer-ratings').snapshotChanges().pipe(
+            map((values: DocumentChangeAction<{}>[]) => {
+                return values.map(this.buildBeerRatingObjectForChangeAction);
+            })
+        );
+    }
 
     private getBeerRatings (beerId: string): Observable<BeerRating[]> {
         return this.afs.collection('beer-ratings', (ref: any) => ref.where('beerId', '==', beerId)).snapshotChanges().pipe(

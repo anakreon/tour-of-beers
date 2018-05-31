@@ -1,7 +1,7 @@
 import { Beer, BeerBase } from './app.types';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of, combineLatest } from 'rxjs';
+import { map, flatMap } from 'rxjs/operators';
 import { AngularFirestore, DocumentChangeAction, DocumentSnapshot, Action } from 'angularfire2/firestore';
 
 @Injectable({
@@ -12,6 +12,12 @@ export class BeerStoreServiceService {
 
     constructor (private afs: AngularFirestore) {}
 
+    public getBeersInOrder (beerIds: string[], limit: number): Observable<Beer[]> {
+        return combineLatest(
+            beerIds.slice(0, limit).map((beerId) => this.getBeer(beerId))
+        );
+    }
+
     public getBeers (): Observable<Beer[]> {
         return this.afs.collection('beers').snapshotChanges().pipe(
             map((values: DocumentChangeAction<{}>[]) => {
@@ -20,7 +26,7 @@ export class BeerStoreServiceService {
         );
     }
 
-    public getBeer (beerId: string): any {
+    public getBeer (beerId: string): Observable<Beer> {
         return this.afs.doc<Beer>('beers/' + beerId).snapshotChanges().pipe(
             map((value: Action<DocumentSnapshot<{}>>) => {
                 return this.buildBeerObjectForSnapshot(value);

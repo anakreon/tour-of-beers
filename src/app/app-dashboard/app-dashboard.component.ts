@@ -14,7 +14,8 @@ export class AppDashboardComponent implements OnInit {
     constructor (private beerDashboardService: BeerDashboardService) {}
 
     ngOnInit () {
-        this.beers = this.beerDashboardService.getDashboardBeers();
+        const limit = 12;
+        this.beers = this.beerDashboardService.getDashboardBeers(limit);
     }
     
 }
