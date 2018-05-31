@@ -11,8 +11,8 @@ const routes: Routes = [
     { path: 'beers', component: AppBeersComponent },
     { path: 'detail/:id', component: AppBeerDetailComponent },
     { path: 'edit/:id', component: AppBeerEditComponent, canActivate: [ AuthGuardService ] },
-    { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-    { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 
 @NgModule({

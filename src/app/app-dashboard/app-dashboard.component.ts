@@ -11,10 +11,10 @@ import { Beer } from '../app.types';
 export class AppDashboardComponent implements OnInit {
     public beers: Observable<Beer[]>;
 
-    constructor (private deerDashboardService: BeerDashboardService) {}
+    constructor (private beerDashboardService: BeerDashboardService) {}
 
     ngOnInit () {
-        this.beers = this.deerDashboardService.getDashboardBeers();
+        this.beers = this.beerDashboardService.getDashboardBeers();
     }
     
 }

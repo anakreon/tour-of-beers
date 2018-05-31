@@ -11,10 +11,11 @@ export class AppMapComponent implements OnChanges {
     @ViewChild('gmap') gmapElement: any;
 
     ngOnChanges () {
-        this.geolocationServiceDecodeToLatLng(this.address)
-            .then((position: google.maps.LatLng) => {
+        if (this.address) {
+            this.geolocationServiceDecodeToLatLng(this.address).then((position: google.maps.LatLng) => {
                 this.initializeMap(position);
             });
+        }
     }
 
     private initializeMap (position: google.maps.LatLng): void {

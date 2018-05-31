@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../app.types';
 import { AuthService } from '../auth.service';
 import { BeerImageService } from '../beer-image.service';
+import { LoadingService } from '../loading.service';
 
 @Component({
     selector: 'app-beer-detail',
@@ -17,8 +17,8 @@ export class AppBeerDetailComponent implements OnInit {
     public beerPictureUrl: string = '';
 
     constructor (
-        private route: ActivatedRoute, private location: Location, private beerStoreService: BeerStoreServiceService, 
-        private beerImageService: BeerImageService, private authService: AuthService
+        private route: ActivatedRoute, private beerStoreService: BeerStoreServiceService, 
+        private beerImageService: BeerImageService, private authService: AuthService, private loadingService: LoadingService
     ) {}
 
     ngOnInit () {
@@ -30,16 +30,15 @@ export class AppBeerDetailComponent implements OnInit {
     }
 
     private getBeer (): void {
+        const unsetLoading = this.loadingService.setLoading();
         const id = this.route.snapshot.paramMap.get('id');
         this.beerStoreService.getBeer(id).subscribe((beer: Beer) => {
             this.beer = beer;
             this.beerImageService.getDownloadUrlOrPlaceholder(this.beer.pictureId).then((url) => {
                 this.beerPictureUrl = url;
+                unsetLoading();
             });
         });
     }
     
-    public goBack (): void {
-        this.location.back();
-    }
 }

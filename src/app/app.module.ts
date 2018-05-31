@@ -9,7 +9,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { 
     MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatGridListModule, MatCardModule, MatFormFieldModule,
-    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressSpinnerModule, MatSliderModule
+    MatInputModule, MatMenuModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressBarModule, MatSliderModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -32,6 +32,7 @@ import { AppBeerCarouselComponent } from './app-beer-carousel/app-beer-carousel.
 import { AppBeerRatingViewComponent } from './app-beer-rating-view/app-beer-rating-view.component';
 import { AppBeerRatingUserComponent } from './app-beer-rating-user/app-beer-rating-user.component';
 import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-card.component';
+import { AppLoadingBarComponent } from './app-loading-bar/app-loading-bar.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-ca
         AppBeerCarouselComponent,
         AppBeerRatingViewComponent,
         AppBeerRatingUserComponent,
-        AppDashboardCardComponent
+        AppDashboardCardComponent,
+        AppLoadingBarComponent
     ],
     imports: [
         BrowserModule,
@@ -75,7 +77,7 @@ import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-ca
         MatTableModule,
         MatPaginatorModule,
         MatSortModule,
-        MatProgressSpinnerModule,
+        MatProgressBarModule,
         MatSliderModule,
         NgbModule.forRoot()
     ],

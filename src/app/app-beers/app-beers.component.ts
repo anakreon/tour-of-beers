@@ -4,6 +4,7 @@ import { AppBeerListDataSource } from './app-beers-datasource';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
+import { LoadingService } from '../loading.service';
 
 @Component({
     selector: 'app-beers',
@@ -17,9 +18,9 @@ export class AppBeersComponent implements OnInit {
     
     displayedColumns = ['name', 'ingredients', 'abv', 'epm', 'brewery'];
 
-    constructor (private beerStoreService: BeerStoreServiceService) {}
+    constructor (private beerStoreService: BeerStoreServiceService, private loadingService: LoadingService) {}
 
     ngOnInit() {
-        this.dataSource = new AppBeerListDataSource(this.paginator, this.sort, this.beerStoreService);
+        this.dataSource = new AppBeerListDataSource(this.paginator, this.sort, this.beerStoreService, this.loadingService);
     }
 }

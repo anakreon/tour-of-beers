@@ -5,6 +5,8 @@ import { BeerStoreServiceService } from '../beer-store-service.service';
 import { Beer } from '../app.types';
 import { switchMap } from 'rxjs/operators';
 import { BeerImageService } from '../beer-image.service';
+import { LoadingService } from '../loading.service';
+import { MAT_CHIPS_DEFAULT_OPTIONS } from '@angular/material';
 
 @Component({
     selector: 'app-beer-edit',
@@ -13,18 +15,19 @@ import { BeerImageService } from '../beer-image.service';
 })
 export class AppBeerEditComponent implements OnInit {
 
-    picture: any;
-    pictureUrl: string;
-    pictureHasChanged = false;
+    public picture: any;
+    public pictureUrl: string;
+    public pictureHasChanged = false;
 
-    beer: Beer;
+    public beer: Beer;
 
     constructor (
         private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreServiceService, 
-        private beerImageService: BeerImageService
+        private beerImageService: BeerImageService, private loadingService: LoadingService
     ) {}
 
     ngOnInit () {
+        const unsetLoading = this.loadingService.setLoading();
         this.route.paramMap.pipe(
             switchMap((params) => {
                 const beerId = params.get('id');
@@ -34,6 +37,7 @@ export class AppBeerEditComponent implements OnInit {
         .subscribe((beer: Beer) => {
             this.initState();
             this.beer = beer;
+            unsetLoading();
             if (this.beer.pictureId) {
                 this.updatePictureUrl(this.beer.pictureId);
             }
@@ -47,13 +51,12 @@ export class AppBeerEditComponent implements OnInit {
     }
 
     public submit (beer: Beer) { 
-        this.uploadPicture()
-            .then(() => {
-                return this.beerStoreService.updateBeer(beer);
-            })
+        const promise = this.uploadPicture()
+            .then(() => this.beerStoreService.updateBeer(beer))
             .then(() => {
                 this.navigateToBeerdetailPage(beer.id);
             });
+        this.loadingService.wrapWithLoading(promise);
     }
 
     private navigateToBeerdetailPage (beerId) {
@@ -62,9 +65,9 @@ export class AppBeerEditComponent implements OnInit {
     
     private uploadPicture (): Promise<void> {
         if (this.pictureHasChanged && this.picture) {
-            this.beerImageService.uploadPicture(this.beer.pictureId, this.picture).then((pictureId) => {
+            return this.beerImageService.uploadPicture(this.beer.pictureId, this.picture).then((pictureId) => {
                 this.beer.pictureId = pictureId;
-                this.updatePictureUrl(pictureId);
+                return this.updatePictureUrl(pictureId);
             });
         } else {
             return Promise.resolve();
@@ -72,12 +75,14 @@ export class AppBeerEditComponent implements OnInit {
     }
 
     private updatePictureUrl (pictureId: string) {
-        this.beerImageService.getDownloadUrlOrPlaceholder(pictureId).then((url) => {
+        const promise = this.beerImageService.getDownloadUrlOrPlaceholder(pictureId).then((url) => {
             this.pictureUrl = url;
         });
+        return this.loadingService.wrapWithLoading(promise);
     }
 
     public upload (file) {
+        const unsetLoading = this.loadingService.setLoading();
         this.picture = file;
         this.pictureHasChanged = true;
 
@@ -85,6 +90,7 @@ export class AppBeerEditComponent implements OnInit {
             const fr = new FileReader();
             fr.onload = () => {
                 this.pictureUrl = fr.result;
+                unsetLoading();
             };
             fr.readAsDataURL(file);
         }

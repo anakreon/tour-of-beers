@@ -5,20 +5,26 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 import { Beer } from '../app.types';
+import { LoadingService } from '../loading.service';
 
 export class AppBeerListDataSource extends DataSource<Beer> {
 
     private data: Beer[] = [];
 
-    constructor (private paginator: MatPaginator, private sort: MatSort, private beerStoreService: BeerStoreServiceService) {
+    constructor (
+        private paginator: MatPaginator, private sort: MatSort, private beerStoreService: BeerStoreServiceService, 
+        private loadingService: LoadingService
+    ) {
         super();
     }
 
     connect(): Observable<Beer[]> {
+        const unsetLoading = this.loadingService.setLoading();
         const beerObservable = this.beerStoreService.getBeers().pipe(
             tap((beers: Beer[]) => {
                 this.data = beers;
                 this.paginator.length = beers.length;
+                unsetLoading();
             })
         );
         const dataMutations = [
