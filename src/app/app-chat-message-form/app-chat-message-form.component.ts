@@ -9,7 +9,7 @@ import { DialogflowService } from '../dialogflow.service';
 })
 export class AppChatMessageFormComponent implements OnInit {
     @Input('message')
-    private message: Message;
+    public message: Message;
 
     @Input('messages')
     private messages: Message[];

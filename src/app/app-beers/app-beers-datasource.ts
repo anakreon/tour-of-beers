@@ -7,9 +7,9 @@ import { BeerStoreServiceService } from '../beer-store-service.service';
 import { Beer } from '../app.types';
 import { LoadingService } from '../loading.service';
 
-export class AppBeerListDataSource extends DataSource<Beer> {
+export class AppBeersDataSource extends DataSource<Beer> {
 
-    private data: Beer[] = [];
+    public data: Beer[] = [];
 
     constructor (
         private paginator: MatPaginator, private sort: MatSort, private beerStoreService: BeerStoreServiceService, 

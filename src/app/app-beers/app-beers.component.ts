@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
-import { AppBeerListDataSource } from './app-beers-datasource';
+import { AppBeersDataSource } from './app-beers-datasource';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 
 import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from 'angularfire2/storage';
@@ -14,13 +14,13 @@ import { LoadingService } from '../loading.service';
 export class AppBeersComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
-    dataSource: AppBeerListDataSource;
+    dataSource: AppBeersDataSource;
     
     displayedColumns = ['name', 'ingredients', 'abv', 'epm', 'brewery'];
 
     constructor (private beerStoreService: BeerStoreServiceService, private loadingService: LoadingService) {}
 
     ngOnInit() {
-        this.dataSource = new AppBeerListDataSource(this.paginator, this.sort, this.beerStoreService, this.loadingService);
+        this.dataSource = new AppBeersDataSource(this.paginator, this.sort, this.beerStoreService, this.loadingService);
     }
 }

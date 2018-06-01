@@ -9,7 +9,7 @@ import { Message } from '../models/message';
 export class AppChatMessageItemComponent implements OnInit {
 
     @Input('message')
-    private message: Message;
+    public message: Message;
 
     constructor() { }
 
