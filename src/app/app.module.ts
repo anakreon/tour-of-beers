@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AngularFireModule } from 'angularfire2';
@@ -33,6 +34,10 @@ import { AppBeerRatingViewComponent } from './app-beer-rating-view/app-beer-rati
 import { AppBeerRatingUserComponent } from './app-beer-rating-user/app-beer-rating-user.component';
 import { AppDashboardCardComponent } from './app-dashboard-card/app-dashboard-card.component';
 import { AppLoadingBarComponent } from './app-loading-bar/app-loading-bar.component';
+import { AppChatMessageListComponent } from './app-chat-message-list/app-chat-message-list.component';
+import { AppChatMessageItemComponent } from './app-chat-message-item/app-chat-message-item.component';
+import { AppChatMessageFormComponent } from './app-chat-message-form/app-chat-message-form.component';
+import { AppChatComponent } from './app-chat/app-chat.component';
 
 @NgModule({
     declarations: [
@@ -51,12 +56,17 @@ import { AppLoadingBarComponent } from './app-loading-bar/app-loading-bar.compon
         AppBeerRatingViewComponent,
         AppBeerRatingUserComponent,
         AppDashboardCardComponent,
-        AppLoadingBarComponent
+        AppLoadingBarComponent,
+        AppChatMessageListComponent,
+        AppChatMessageItemComponent,
+        AppChatMessageFormComponent,
+        AppChatComponent
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         FormsModule,
+        HttpClientModule,
         AppRoutingModule,
         LayoutModule,
         FlexLayoutModule,

@@ -1,0 +1,12 @@
+<li class="list-group-item">
+    <img [src]="message.avatar" class="avatar" />
+    <div class='item-content'>
+        <div class="message">
+            {{message.content}}
+        </div>
+        <div class="item-time">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="timestamp">{{message.timestamp | date : 'HH:mm dd/MM/yyyy' }}</span>
+        </div>
+    </div>
+</li>

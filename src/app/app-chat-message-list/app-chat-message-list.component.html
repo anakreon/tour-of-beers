@@ -1,0 +1,5 @@
+<div class="chatlist" #chatlist>
+    <ul class="list-group">
+        <app-chat-message-item *ngFor="let msg of messages" [message]="msg"></app-chat-message-item>
+    </ul>
+</div>
