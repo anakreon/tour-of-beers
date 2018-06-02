@@ -1,0 +1,63 @@
+.beer-card {
+    display: flex;
+    cursor: pointer;
+    height: 303px;
+}
+
+.beer-card-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.beer-card img {
+    width: 100%;
+    max-height: 255px;
+    height: 255px;
+}
+
+.beer-card .beer-image {
+    flex: 1;
+}
+
+::ng-deep .mat-card-header-text {
+    margin: 0px;
+}
+
+.mat-card-header {
+    flex: 1;
+}
+
+.mat-card-content {
+    flex: 2;
+}
+
+.mat-card-title {
+    margin-top: 15px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.description {
+    display: inline-block;
+    width: 30%;
+}
+
+.rating {
+    color: grey;
+    display: inline-block;
+    width: 60%;
+    margin-left: 10%;
+    text-align: right;
+}
+
+.description ul {
+    list-style: none;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+::ng-deep .rating ngb-rating .ng-star-inserted {
+    font-size: 15px;
+}

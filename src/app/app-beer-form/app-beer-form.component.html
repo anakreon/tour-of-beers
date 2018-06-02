@@ -5,6 +5,9 @@
                 <input matInput placeholder="Beer Name" [(ngModel)]="beer.name" name="name">
             </mat-form-field>
             <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Beer Description" [(ngModel)]="beer.description" name="description"></textarea>
+                </mat-form-field>
+            <mat-form-field class="example-full-width">
                 <textarea matInput placeholder="Beer Ingredients" [(ngModel)]="beer.ingredients" name="ingredients"></textarea>
             </mat-form-field>
             <mat-grid-list cols="2" rowHeight="100px" gutterSize="20px">

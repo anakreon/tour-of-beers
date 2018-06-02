@@ -9,13 +9,17 @@ import { Beer } from '../app.types';
     styleUrls: ['./app-dashboard.component.css']
 })
 export class AppDashboardComponent implements OnInit {
-    public beers: Observable<Beer[]>;
+    public beers: Beer[];
+    public bestBeer: Beer;
 
     constructor (private beerDashboardService: BeerDashboardService) {}
 
     ngOnInit () {
         const limit = 12;
-        this.beers = this.beerDashboardService.getDashboardBeers(limit);
+        this.beerDashboardService.getDashboardBeers(limit).subscribe((beers) => {
+            this.bestBeer = beers[0];
+            this.beers = beers.slice(1);
+        });
     }
     
 }

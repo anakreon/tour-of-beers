@@ -8,6 +8,7 @@ export interface Beer extends BeerBase {
     abv: number;
     epm: number;
     style: string;
+    description: string;
     brewery: string;
     pictureId: any;
 }

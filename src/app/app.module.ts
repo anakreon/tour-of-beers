@@ -38,6 +38,7 @@ import { AppChatMessageListComponent } from './app-chat-message-list/app-chat-me
 import { AppChatMessageItemComponent } from './app-chat-message-item/app-chat-message-item.component';
 import { AppChatMessageFormComponent } from './app-chat-message-form/app-chat-message-form.component';
 import { AppChatComponent } from './app-chat/app-chat.component';
+import { AppDashboardCardBestComponent } from './app-dashboard-card-best/app-dashboard-card-best.component';
 
 @NgModule({
     declarations: [
@@ -60,7 +61,8 @@ import { AppChatComponent } from './app-chat/app-chat.component';
         AppChatMessageListComponent,
         AppChatMessageItemComponent,
         AppChatMessageFormComponent,
-        AppChatComponent
+        AppChatComponent,
+        AppDashboardCardBestComponent
     ],
     imports: [
         BrowserModule,

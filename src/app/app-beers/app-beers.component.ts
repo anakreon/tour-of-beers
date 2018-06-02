@@ -16,7 +16,7 @@ export class AppBeersComponent implements OnInit {
     @ViewChild(MatSort) sort: MatSort;
     dataSource: AppBeersDataSource;
     
-    displayedColumns = ['name', 'ingredients', 'abv', 'epm', 'brewery'];
+    displayedColumns = ['name', 'style', 'abv', 'epm', 'brewery'];
 
     constructor (private beerStoreService: BeerStoreServiceService, private loadingService: LoadingService) {}
 
