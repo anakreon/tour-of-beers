@@ -6,6 +6,7 @@ const rsync = new Rsync()
   .flags('az')
   .set('delete')
   .source('./dist/tour-of-beers/')
+  .source('./docs/')
   .destination(serverSettings.destination);
  
 rsync.execute(function(error, code, cmd) {});

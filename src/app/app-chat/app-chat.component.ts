@@ -14,7 +14,7 @@ export class AppChatComponent implements OnInit {
     constructor() { 
         this.message = new Message('', 'assets/person.png');
         this.messages = [
-            new Message('Welcome to chatbot universe', 'assets/bot.png', new Date())
+            new Message('Welcome to Tour of Beers', 'assets/bot.png', new Date())
         ];
     }
 

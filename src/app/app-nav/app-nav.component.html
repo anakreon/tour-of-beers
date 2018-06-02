@@ -1,24 +1,30 @@
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
         [opened]="!(isHandset | async)!.matches">
-        <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-toolbar color="primary">xxx</mat-toolbar>
+        <mat-nav-list>
+            <a mat-list-item routerLink="/dashboard">dashboard</a>
+            <a mat-list-item routerLink="/beers">beers</a>
+        </mat-nav-list>
         <ng-container *ngIf="isUserAuthenticated()">
             <button class='add-button pulse' mat-mini-fab color="accent" [matMenuTriggerFor]="addBeerMenu">+</button>
             <mat-menu #addBeerMenu="matMenu" yPosition="below" xPosition="after" [overlapTrigger]="false" class="add-beer-menu">
                 <app-beer-add-card (closeMenu)="closeBeerMenu()"></app-beer-add-card>
             </mat-menu>
         </ng-container>
-        <mat-nav-list>
-            <a mat-list-item routerLink="/dashboard">Dashboard</a>
-            <a mat-list-item routerLink="/beers">Beers</a>
-        </mat-nav-list>
+        <div class="bottom-content" id="botNav" mat-list-item>
+            <mat-list dense>
+                <mat-list-item><a target="_blank" href="/privacy-policy">Privacy Policy</a></mat-list-item>
+                <mat-list-item><a target="_blank" href="/terms">Terms and Conditions</a></mat-list-item>
+            </mat-list>
+         </div>
     </mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="(isHandset | async)!.matches">
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
             </button>
-            <span>Tour of Beers</span>
+            <span>tour of beers</span>
             <span class="fill-remaining-space"></span>
             <app-nav-user></app-nav-user>
         </mat-toolbar>
