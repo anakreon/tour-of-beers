@@ -7,6 +7,7 @@ const rsync = new Rsync()
   .set('delete')
   .source('./dist/tour-of-beers/')
   .source('./docs/')
+  .exclude('.htaccess')
   .destination(serverSettings.destination);
  
 rsync.execute(function(error, code, cmd) {});
