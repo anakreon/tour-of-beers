@@ -1,6 +1,11 @@
 import { Component,  Input, ViewChild, OnChanges } from '@angular/core';
 import { } from '@types/googlemaps';
 
+interface GeolocationData {
+    address: string;
+    location: google.maps.LatLng;
+};
+
 @Component({
     selector: 'app-map',
     templateUrl: './app-map.component.html',
@@ -10,10 +15,13 @@ export class AppMapComponent implements OnChanges {
     @Input() address: string;
     @ViewChild('gmap') gmapElement: any;
 
+    public formattedAddress: string;
+
     ngOnChanges () {
         if (this.address) {
-            this.geolocationServiceDecodeToLatLng(this.address).then((position: google.maps.LatLng) => {
-                this.initializeMap(position);
+            this.getGeolocationData(this.address).then((geolocationData: GeolocationData) => {
+                this.formattedAddress = geolocationData.address;
+                this.initializeMap(geolocationData.location);
             });
         }
     }
@@ -35,11 +43,14 @@ export class AppMapComponent implements OnChanges {
         };
     }
 
-    private geolocationServiceDecodeToLatLng (address: string): Promise<google.maps.LatLng> {
+    private getGeolocationData (address: string): Promise<GeolocationData> {
         return new Promise((resolve, reject) => {
             new google.maps.Geocoder().geocode({ address }, (results: google.maps.GeocoderResult[], status: google.maps.GeocoderStatus) => {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    resolve(results[0].geometry.location);
+                    resolve({
+                        address: results[0].formatted_address,
+                        location: results[0].geometry.location
+                    });
                 } else {
                     reject('Geocode was not successful for the following reason: ' + status);
                 }
