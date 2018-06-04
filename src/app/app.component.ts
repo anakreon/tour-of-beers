@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './notification.service';
 import { AuthService } from './auth.service';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
     selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
     private hideOnlineAlert: () => void;
     private internetDisconnectedMessage = 'Internet connection has been lost. Working offline.';
 
-    constructor (private notificationService: NotificationService, private authService: AuthService) {}
+    constructor (private notificationService: NotificationService, private authService: AuthService, private observableMedia: ObservableMedia) {}
 
     public ngOnInit () {
         window.addEventListener('online', () => this.updateOnlineStatus());
@@ -30,8 +31,16 @@ export class AppComponent implements OnInit {
         }        
     }
 
-    public isUserAuthenticated (): boolean {
+    public shouldShowChat () {
+        return this.isUserAuthenticated() && this.isReasonableScreenSize();
+    }
+
+    private isUserAuthenticated (): boolean {
         return this.authService.isAuthenticated();
+    }
+    
+    private isReasonableScreenSize (): boolean {
+        return !(this.observableMedia.isActive('xs') || this.observableMedia.isActive('sm'));
     }
 
 }

@@ -8,6 +8,11 @@
     left: 0;
 }
 
+.title {
+    font-family: 'Amaranth Regular';
+    font-size: 20pt;
+}
+
 .bottom-content a {
     color: inherit !important;
 }

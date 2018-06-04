@@ -10,6 +10,10 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
 
+@font-face {
+    font-family: 'Amaranth Regular';
+    src: url(assets/Amaranth-Regular.ttf);
+}    
 
 /* Application-wide Styles */
 h1 {
