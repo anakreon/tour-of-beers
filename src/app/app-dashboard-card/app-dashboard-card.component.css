@@ -8,6 +8,11 @@
 .beer-card img {
     max-height: 150px;
     height: 150px;
+    width: auto;
+}
+
+.image-wrapper {
+    text-align: center;
 }
 
 ::ng-deep .mat-card-header-text {
@@ -27,14 +32,14 @@
 
 .description {
     display: inline-block;
-    width: 30%;
+    width: 35%;
 }
 
 .rating {
     color: grey;
     display: inline-block;
     width: 60%;
-    margin-left: 10%;
+    margin-left: 5%;
     text-align: right;
 }
 

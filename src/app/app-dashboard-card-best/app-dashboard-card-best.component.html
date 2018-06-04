@@ -2,21 +2,22 @@
     <div class="beer-card-content">
         <mat-card-header>
             <mat-card-title>{{ beer.name }}</mat-card-title>
-            <mat-card-subtitle>some style {{ beer.style }}</mat-card-subtitle>
+            <mat-card-subtitle>{{ beer.style }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <div class='description'>
-                <div>
-                    {{ beer.description }}
-                    asdf asdfl kasdjf ;lasdkfj as;dlfkj a;sdlkfj asd;lfkj a;sdlkfj asd;lfkjsda;flkj
-                </div>
-                <ul>
-                    <li>ABV: {{ beer.abv }}</li>
-                    <li>EPM: {{ beer.epm }}</li>
-                </ul>
+            <div class="description">
+                {{ beer.description }}
             </div>
-            <div class='rating'>
-                <app-beer-rating-view [beerId]="beer.id"></app-beer-rating-view>
+            <div class="bottom-block">
+                <div class='bottom-left'>
+                    <ul>
+                        <li>ABV: {{ beer.abv }}%</li>
+                        <li>EPM: {{ beer.epm }}°</li>
+                    </ul>
+                </div>
+                <div class='rating'>
+                    <app-beer-rating-view [beerId]="beer.id"></app-beer-rating-view>
+                </div>
             </div>
         </mat-card-content>
     </div>

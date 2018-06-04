@@ -1,14 +1,16 @@
 <mat-card class="beer-card" routerLink="/detail/{{beer.id}}">
-    <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
+    <div class="image-wrapper">
+        <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
+    </div>
     <mat-card-header>
         <mat-card-title>{{ beer.name }}</mat-card-title>
-        <mat-card-subtitle>some style {{ beer.style }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ beer.style }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
         <div class='description'>
             <ul>
-                <li>ABV: {{ beer.abv }}</li>
-                <li>EPM: {{ beer.epm }}</li>
+                <li>ABV: {{ beer.abv }}%</li>
+                <li>EPM: {{ beer.epm }}°</li>
             </ul>
         </div>
         <div class='rating'>

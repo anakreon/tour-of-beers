@@ -1,6 +1,16 @@
 .beer-card {
     max-width: 400px;
 }
+
+.image-wrapper {
+    text-align: center;
+}
+
+.image-wrapper img {
+    max-width: 400px;
+    height: 250px;
+    width: auto;
+}
   
 .beer-header-image {
     background-image: url('../../assets/beer_placeholder.jpg');

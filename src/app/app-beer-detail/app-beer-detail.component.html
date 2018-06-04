@@ -1,19 +1,21 @@
 <div class="beer-container" *ngIf="beer">
     <mat-card class="beer-card">
+        <div class="image-wrapper">
+            <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
+        </div>
         <mat-card-header>
             <div mat-card-avatar class="beer-header-image"></div>
             <mat-card-title>{{ beer.name }}</mat-card-title>
             <mat-card-subtitle>{{ beer.style }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
         <mat-card-content>
             <p>{{ beer.description }}</p>
             <p>{{ beer.ingredients }}</p>
             <p>{{ beer.brewery }}</p>
             <div class='description'>
                 <ul>
-                    <li>ABV: {{ beer.abv }}</li>
-                    <li>EPM: {{ beer.epm }}</li>
+                    <li>ABV: {{ beer.abv }}%</li>
+                    <li>EPM: {{ beer.epm }}°</li>
                 </ul>
             </div>
             <div class='rating'>
