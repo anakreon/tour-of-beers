@@ -6,14 +6,9 @@ import { Message } from '../models/message';
     templateUrl: './app-chat-message-item.component.html',
     styleUrls: ['./app-chat-message-item.component.scss']
 })
-export class AppChatMessageItemComponent implements OnInit {
+export class AppChatMessageItemComponent {
 
     @Input('message')
     public message: Message;
-
-    constructor() { }
-
-    ngOnInit() {
-    }
 
 }

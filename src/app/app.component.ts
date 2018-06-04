@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotificationService } from './notification.service';
+import { AuthService } from './auth.service';
 
 @Component({
     selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements OnInit {
     private hideOnlineAlert: () => void;
     private internetDisconnectedMessage = 'Internet connection has been lost. Working offline.';
 
-    constructor (private notificationService: NotificationService) {}
+    constructor (private notificationService: NotificationService, private authService: AuthService) {}
 
     public ngOnInit () {
         window.addEventListener('online', () => this.updateOnlineStatus());
@@ -27,6 +28,10 @@ export class AppComponent implements OnInit {
         } else {
             this.hideOnlineAlert = this.notificationService.showAlert(this.internetDisconnectedMessage);
         }        
+    }
+
+    public isUserAuthenticated (): boolean {
+        return this.authService.isAuthenticated();
     }
 
 }
