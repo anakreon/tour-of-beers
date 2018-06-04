@@ -1,10 +1,10 @@
 <div class="grid-container">
     <mat-grid-list cols="6" rowHeight="350px" gutterSize="10px">
-        <mat-grid-tile colspan="3" rowspan="1" class='best-rated-card-tile'>
+        <mat-grid-tile [colspan]="shouldShowCarousel ? 3 : 6" rowspan="1" class='best-rated-card-tile'>
             <h3>Best Rated Beer</h3>
             <app-dashboard-card-best class='best-rated-card' *ngIf="bestBeer" [beer]="bestBeer"></app-dashboard-card-best>
         </mat-grid-tile>
-        <mat-grid-tile colspan="3" rowspan="1">
+        <mat-grid-tile colspan="3" rowspan="1" *ngIf="shouldShowCarousel">
             <mat-card class="carousel-card">
                 <mat-card-content class="dashboard-card-content">
                     <app-beer-carousel></app-beer-carousel>
@@ -13,7 +13,7 @@
         </mat-grid-tile>
     </mat-grid-list>
     <h3>Other Top Beers</h3>
-    <mat-grid-list cols="6" rowHeight="350px">
+    <mat-grid-list [cols]="gridCols" rowHeight="350px">
         <mat-grid-tile *ngFor="let beer of beers" colspan="1" rowspan="1">
             <app-dashboard-card class="dashboard-card" [beer]="beer"></app-dashboard-card>
         </mat-grid-tile>

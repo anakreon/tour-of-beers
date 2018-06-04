@@ -10,12 +10,17 @@ import { Beer } from '../app.types';
 export class AppDashboardCardBestComponent implements OnInit {
     @Input() beer: Beer;
     public beerPictureUrl: string;
+    public isLoading = false;
 
     constructor (private beerImageService: BeerImageService) { }
 
     ngOnInit () {
+        this.isLoading = true;
         this.beerImageService.getDownloadUrlOrPlaceholder(this.beer.pictureId).then((url) => {
             this.beerPictureUrl = url;
         });
+    }
+    onImageLoad () {
+        this.isLoading = false;
     }
 }

@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
 import { BeerImageService } from '../beer-image.service';
 import { LoadingService } from '../loading.service';
 import { BeerRatingService } from '../beer-rating.service';
+import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 
 @Component({
     selector: 'app-beer-detail',
@@ -15,16 +16,22 @@ import { BeerRatingService } from '../beer-rating.service';
 })
 export class AppBeerDetailComponent implements OnInit {
     public beer: Beer;
-    public beerPictureUrl: string = '';
+    public beerPictureUrl = '';
+    public flexDirection = 'row';
+    public isLoading = false;
 
     constructor (
         private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreServiceService,
         private beerImageService: BeerImageService, private authService: AuthService, private loadingService: LoadingService,
-        private beerRatingService: BeerRatingService
+        private beerRatingService: BeerRatingService, private observableMedia: ObservableMedia
     ) {}
 
     ngOnInit () {
         this.getBeer();
+    }
+
+    public getFlexDirection () {
+        return this.observableMedia.isActive('xs') ? 'column' : 'row';
     }
 
     public isUserAuthenticated () {
@@ -51,11 +58,15 @@ export class AppBeerDetailComponent implements OnInit {
         const id = this.route.snapshot.paramMap.get('id');
         this.beerStoreService.getBeer(id).subscribe((beer: Beer) => {
             this.beer = beer;
+            this.isLoading = true;
             this.beerImageService.getDownloadUrlOrPlaceholder(this.beer.pictureId).then((url) => {
                 this.beerPictureUrl = url;
                 unsetLoading();
             });
         });
     }
-    
+
+    public onImageLoad () {
+        this.isLoading = false;
+    }
 }

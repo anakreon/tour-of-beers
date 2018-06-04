@@ -1,5 +1,5 @@
 .beer-card {
-    max-width: 400px;
+    flex: 1;
 }
 
 .image-wrapper {
@@ -23,6 +23,7 @@
 
 .detail-card {
     min-width: 400px;
+    flex: 1;
 }
 
 .beer-rating {

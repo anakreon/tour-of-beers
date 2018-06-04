@@ -1,7 +1,8 @@
-<div class="beer-container" *ngIf="beer">
+<div class="beer-container" *ngIf="beer" [style.flex-direction]="getFlexDirection()">
     <mat-card class="beer-card">
+        <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
         <div class="image-wrapper">
-            <img mat-card-image [src]="beerPictureUrl" alt="Cool beer photo here">
+            <img mat-card-image [src]="beerPictureUrl" alt="" (load)="onImageLoad()">
         </div>
         <mat-card-header>
             <div mat-card-avatar class="beer-header-image"></div>
@@ -14,8 +15,8 @@
             <p>{{ beer.brewery }}</p>
             <div class='description'>
                 <ul>
-                    <li>ABV: {{ beer.abv }}%</li>
-                    <li>EPM: {{ beer.epm }}°</li>
+                    <li>ABV:&nbsp;{{ beer.abv }}%</li>
+                    <li>EPM:&nbsp;{{ beer.epm }}°</li>
                 </ul>
             </div>
             <div class='rating'>
