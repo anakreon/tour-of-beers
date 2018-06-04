@@ -10,11 +10,11 @@
         </ng-container>
         <ng-container matColumnDef="abv">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Alcohol</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.abv}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.abv}}%</mat-cell>
         </ng-container>
         <ng-container matColumnDef="epm">
             <mat-header-cell *matHeaderCellDef mat-sort-header>EPM</mat-header-cell>
-            <mat-cell *matCellDef="let row">{{row.epm}}</mat-cell>
+            <mat-cell *matCellDef="let row">{{row.epm}}°</mat-cell>
         </ng-container>
         <ng-container matColumnDef="brewery">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Brewery</mat-header-cell>
@@ -23,6 +23,4 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;" routerLink="/detail/{{row.id}}"></mat-row>
     </mat-table>
-    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
-    </mat-paginator>
 </div>

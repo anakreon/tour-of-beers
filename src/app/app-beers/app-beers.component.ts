@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatSort } from '@angular/material';
 import { AppBeersDataSource } from './app-beers-datasource';
 import { BeerStoreServiceService } from '../beer-store-service.service';
 
@@ -12,7 +12,6 @@ import { LoadingService } from '../loading.service';
     styleUrls: ['./app-beers.component.css']
 })
 export class AppBeersComponent implements OnInit {
-    @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort) sort: MatSort;
     dataSource: AppBeersDataSource;
     
@@ -21,6 +20,6 @@ export class AppBeersComponent implements OnInit {
     constructor (private beerStoreService: BeerStoreServiceService, private loadingService: LoadingService) {}
 
     ngOnInit() {
-        this.dataSource = new AppBeersDataSource(this.paginator, this.sort, this.beerStoreService, this.loadingService);
+        this.dataSource = new AppBeersDataSource(this.sort, this.beerStoreService, this.loadingService);
     }
 }
