@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { User } from 'firebase';
+import { ObservableMedia } from '@angular/flex-layout';
+import { User } from '@firebase/auth-types';
 
 @Component({
     selector: 'app-nav-user',
@@ -9,7 +10,7 @@ import { User } from 'firebase';
 })
 export class AppNavUserComponent {
     
-    constructor (private authService: AuthService) {}
+    constructor (private authService: AuthService, private observableMedia: ObservableMedia) {}
 
     public isUserAuthenticated () {
         return this.authService.isAuthenticated();
@@ -25,6 +26,10 @@ export class AppNavUserComponent {
 
     public getUser (): User {
         return this.authService.getUser();
+    }
+
+    public shouldShowCardText () {
+        return !this.observableMedia.isActive('xs');
     }
 
 }

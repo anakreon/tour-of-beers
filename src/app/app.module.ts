@@ -39,6 +39,7 @@ import { AppChatMessageItemComponent } from './app-chat-message-item/app-chat-me
 import { AppChatMessageFormComponent } from './app-chat-message-form/app-chat-message-form.component';
 import { AppChatComponent } from './app-chat/app-chat.component';
 import { AppDashboardCardBestComponent } from './app-dashboard-card-best/app-dashboard-card-best.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
     declarations: [
@@ -91,7 +92,8 @@ import { AppDashboardCardBestComponent } from './app-dashboard-card-best/app-das
         MatSortModule,
         MatProgressBarModule,
         MatSliderModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
     ],
     providers: [],
     bootstrap: [ 

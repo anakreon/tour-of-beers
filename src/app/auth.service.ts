@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { auth, User } from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import { User } from '@firebase/auth-types';
 import { Observable } from '@firebase/util';
 import { map } from 'rxjs/operators';
 
@@ -21,7 +23,7 @@ export class AuthService {
     }
 
     public login (): Promise<any> {
-        return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+        return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     }
 
     public logout (): Promise<any> {

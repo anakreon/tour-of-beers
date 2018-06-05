@@ -12,7 +12,7 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @font-face {
     font-family: 'Amaranth Regular';
-    src: url(assets/Amaranth-Regular.ttf);
+    src: url('/tob/assets/fonts/Amaranth-Regular.ttf');
 }    
 
 /* Application-wide Styles */
