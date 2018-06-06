@@ -3,8 +3,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import { User } from '@firebase/auth-types';
-import { Observable } from '@firebase/util';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -34,7 +34,7 @@ export class AuthService {
         return this.user;
     }
 
-    public getUserId (): any {
+    public getUserId (): Observable<string> {
         return this.afAuth.user.pipe(
             map((user: User) => user && user.uid)
         );

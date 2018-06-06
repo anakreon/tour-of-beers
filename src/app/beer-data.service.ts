@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Beer } from './app.types';
-import { BeerStoreServiceService } from './beer-store-service.service';
+import { BeerStoreService } from './beer-store.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class BeerDataService {
-
-    constructor (private beerStoreServiceService: BeerStoreServiceService) {}
+    constructor (private beerStoreServiceService: BeerStoreService) {}
 
     public addDefaultBeers() {
         this.beerStoreServiceService.addBeer(<Beer>{

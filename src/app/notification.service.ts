@@ -12,6 +12,7 @@ export class NotificationService {
             this.alertMessage = '';
         });
     }
+    
     public getAlertMessage (): string {
         return this.alertMessage;
     }

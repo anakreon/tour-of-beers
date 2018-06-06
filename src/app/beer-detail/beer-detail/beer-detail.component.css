@@ -1,0 +1,56 @@
+.beer-card {
+    flex: 1;
+}
+
+.image-wrapper {
+    text-align: center;
+}
+
+.image-wrapper img {
+    max-width: 400px;
+    height: 250px;
+    width: auto;
+}
+  
+.beer-header-image {
+    background-image: url('../../../assets/beer_placeholder.jpg');
+    background-size: cover;
+}
+
+.beer-container {
+    display: flex;
+}
+
+.rating-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.rating-card .mat-card-content {
+    font-size: 15pt;
+}
+
+.brewery-card {
+    flex: 1;
+}
+
+.description {
+    display: inline-block;
+    width: 30%;
+}
+
+.rating {
+    color: grey;
+    display: inline-block;
+    width: 60%;
+    margin-left: 10%;
+    text-align: right;
+}
+
+.description ul {
+    list-style: none;
+    padding: 0px;
+}

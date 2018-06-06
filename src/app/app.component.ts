@@ -9,17 +9,18 @@ import { ObservableMedia } from '@angular/flex-layout';
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-    title = 'Tour of Beers';
+    public title = 'Tour of Beers';
     private hideOnlineAlert: () => void;
     private internetDisconnectedMessage = 'Internet connection has been lost. Working offline.';
 
-    constructor (private notificationService: NotificationService, private authService: AuthService, private observableMedia: ObservableMedia) {}
+    constructor (
+        private notificationService: NotificationService, private authService: AuthService, private observableMedia: ObservableMedia
+    ) {}
 
     public ngOnInit () {
         window.addEventListener('online', () => this.updateOnlineStatus());
         window.addEventListener('offline', () => this.updateOnlineStatus());
     }
-
     private updateOnlineStatus () {
         if (navigator.onLine) {
             if (this.hideOnlineAlert) {
@@ -34,13 +35,10 @@ export class AppComponent implements OnInit {
     public shouldShowChat () {
         return this.isUserAuthenticated() && this.isReasonableScreenSize();
     }
-
     private isUserAuthenticated (): boolean {
         return this.authService.isAuthenticated();
     }
-    
     private isReasonableScreenSize (): boolean {
         return !(this.observableMedia.isActive('xs') || this.observableMedia.isActive('sm'));
     }
-
 }
