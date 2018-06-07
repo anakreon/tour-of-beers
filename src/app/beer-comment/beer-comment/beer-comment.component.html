@@ -1,0 +1,4 @@
+<div class="chatform">
+    <app-beer-comment-list [comments]="comments | async"></app-beer-comment-list>
+    <app-beer-comment-form (addRequest)="addComment($event)"></app-beer-comment-form>
+</div>

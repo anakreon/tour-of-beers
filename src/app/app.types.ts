@@ -24,3 +24,11 @@ export interface BeerRatingResult {
     count: number;
     rating: number;
 }
+
+export interface BeerComment {
+    id?: string;
+    userId: string;
+    userName: string;
+    text: string;
+    timestamp: number;
+}

@@ -1,0 +1,13 @@
+<div class="comment-list" #chatlist>
+    <mat-card *ngFor="let comment of comments">
+        <mat-card-header>
+            <mat-card-subtitle>{{comment.userName}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            {{comment.text}}
+        </mat-card-content>
+        <mat-card-actions align="end">
+            {{comment.timestamp | date : 'HH:mm dd/MM/yyyy' }}
+        </mat-card-actions>
+    </mat-card>
+</div>

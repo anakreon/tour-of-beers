@@ -4,6 +4,7 @@ import { MatCardModule, MatProgressBarModule, MatButtonModule } from '@angular/m
 
 import { BeerDetailComponent } from './beer-detail/beer-detail.component';
 import { BeerDetailMapComponent } from './beer-detail-map/beer-detail-map.component';
+import { BeerCommentModule } from '../beer-comment/beer-comment.module';
 import { BeerRatingModule } from '../beer-rating/beer-rating.module';
 import { RoutingModule } from '../routing.module';
 
@@ -13,6 +14,7 @@ import { RoutingModule } from '../routing.module';
         MatCardModule,
         MatProgressBarModule,
         MatButtonModule,
+        BeerCommentModule,
         BeerRatingModule,
         RoutingModule
     ],

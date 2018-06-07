@@ -32,6 +32,9 @@
             Rate beer:
             <app-beer-rating-user [beerId]="beer.id"></app-beer-rating-user>
         </mat-card-content>
+        <mat-card-content>
+            <app-beer-comment [beerId]="beer.id"></app-beer-comment>
+        </mat-card-content>
     </mat-card>
     <mat-card class="brewery-card">
         <mat-card-title>{{ beer.brewery }}</mat-card-title>

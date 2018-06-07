@@ -33,7 +33,7 @@ export class ChatComponent implements OnInit {
         this.addMessage(text, 'assets/bot.png', date);
     }
     private addMessage(text: string, iconUrl: string, date: Date): void {
-        const message = new Message(text, iconUrl, );
+        const message = new Message(text, iconUrl, date);
         this.messages.push(message);
         this.scrollDown();
     }
