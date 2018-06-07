@@ -16,6 +16,10 @@ describe('ChatMessageItemComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ChatMessageItemComponent);
         component = fixture.componentInstance;
+        component.message = {
+            avatar: 'asdf',
+            content: ''
+        };
         fixture.detectChanges();
     });
 

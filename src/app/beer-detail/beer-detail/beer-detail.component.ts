@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BeerStoreService } from '../../beer-store.service';
-import { AngularFireStorage } from 'angularfire2/storage';
 import { Beer } from '../../app.types';
 import { AuthService } from '../../auth.service';
 import { BeerImageService } from '../../beer-image.service';
@@ -63,7 +62,7 @@ export class BeerDetailComponent implements OnInit {
                 this.beerPictureUrl = url;
                 unsetLoading();
             });
-        });
+        }, (error) => console.log(error));
     }
 
     public onImageLoad () {

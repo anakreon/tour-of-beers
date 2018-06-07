@@ -6,10 +6,10 @@ import { BeerStoreService } from './beer-store.service';
     providedIn: 'root'
 })
 export class BeerDataService {
-    constructor (private beerStoreServiceService: BeerStoreService) {}
+    constructor (private beerStoreService: BeerStoreService) {}
 
     public addDefaultBeers() {
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Pilsner Urquell',
             ingredients: 'water, barley malt, hops, yeast',
             abv: 4.4,
@@ -19,7 +19,7 @@ export class BeerDataService {
             brewery: 'Pilsner Urquell Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Budweiser Budvar B:CLASSIC',
             ingredients: 'unknown',
             abv: 4,
@@ -29,7 +29,7 @@ export class BeerDataService {
             brewery: 'Budweiser Budvar Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Gambrinus Excelent 11°',
             ingredients: 'water, barley malt, hops',
             abv: 4.7,
@@ -39,7 +39,7 @@ export class BeerDataService {
             brewery: 'Pilsner Urquell Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Staropramen Ležák',
             ingredients: 'water, hops, malt, maltose syrup',
             abv: 5,
@@ -49,7 +49,7 @@ export class BeerDataService {
             brewery: 'Staropramen Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Velkopopovický Kozel 11',
             ingredients: 'water, barley malt, hops',
             abv: 4.6,
@@ -59,7 +59,7 @@ export class BeerDataService {
             brewery: 'Velkopopovický Kozel Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Svijanská Desítka',
             ingredients: 'water, malt, hops, sugar',
             abv: 4,
@@ -69,7 +69,7 @@ export class BeerDataService {
             brewery: 'Svijany Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Praga Premium Pils',
             ingredients: 'water, malt, hops, yeast',
             abv: 4.7,
@@ -79,7 +79,7 @@ export class BeerDataService {
             brewery: 'Pivovar Samson'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Bernard 12',
             ingredients: 'water, self-produced barley malt, hops',
             abv: 4.9,
@@ -89,7 +89,7 @@ export class BeerDataService {
             brewery: 'Bernard Brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Březňák Světlé výčepní',
             ingredients: 'water, barley malt, hops',
             abv: 4.1,
@@ -99,7 +99,7 @@ export class BeerDataService {
             brewery: 'Velké Březno brewery'
         });
 
-        this.beerStoreServiceService.addBeer(<Beer>{
+        this.beerStoreService.addBeer(<Beer>{
             name: 'Krušovické černé',
             ingredients: 'unknown',
             abv: 3.8,

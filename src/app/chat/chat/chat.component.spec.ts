@@ -1,6 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule, MatMenuModule } from '@angular/material';
 
 import { ChatComponent } from './chat.component';
+import { Component, Input } from '@angular/core';
+import { DialogflowService } from '../dialogflow.service';
+import { AuthService } from '../../auth.service';
+
+@Component({ selector: 'app-chat-message-list', template: '' })
+class AppChatMessageList {
+    @Input('messages') messages;
+}
+
+@Component({ selector: 'app-chat-message-form', template: '' })
+class AppChatMessageForm {}
+
+const MockDialogflowService = jasmine.createSpyObj('MockDialogflowService', ['getResponse']);
+const MockAuthService = jasmine.createSpyObj('MockAuthService', ['getUser']);
 
 describe('ChatComponent', () => {
     let component: ChatComponent;
@@ -8,7 +23,15 @@ describe('ChatComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ChatComponent]
+            imports: [MatButtonModule, MatMenuModule],
+            declarations: [ChatComponent, AppChatMessageList, AppChatMessageForm],
+            providers: [{ 
+                provide: DialogflowService,
+                useValue: MockDialogflowService 
+            }, { 
+                provide: AuthService,
+                useValue: MockAuthService 
+            }]
         })
             .compileComponents();
     }));

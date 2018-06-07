@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardCarouselComponent } from './dashboard-carousel.component';
+import { Component, Input } from '@angular/core';
+
+@Component({ selector: 'ngb-carousel', template: '' })
+class NgbCarouselComponent {}
 
 describe('DashboardCarouselComponent', () => {
     let component: DashboardCarouselComponent;
@@ -8,7 +12,7 @@ describe('DashboardCarouselComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DashboardCarouselComponent]
+            declarations: [DashboardCarouselComponent, NgbCarouselComponent]
         })
             .compileComponents();
     }));

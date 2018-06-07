@@ -14,7 +14,6 @@ import { RoutingModule } from './routing.module';
 import { BeerDetailModule } from './beer-detail/beer-detail.module';
 import { BeerEditModule } from './beer-edit/beer-edit.module';
 import { BeerListModule } from './beer-list/beer-list.module';
-import { BeerRatingModule } from './beer-rating/beer-rating.module';
 import { ChatModule } from './chat/chat.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { NavModule } from './nav/nav.module';
@@ -33,7 +32,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         BeerDetailModule,
         BeerEditModule,
         BeerListModule,
-        BeerRatingModule,
         ChatModule,
         DashboardModule,
         NavModule,
