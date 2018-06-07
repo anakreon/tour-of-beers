@@ -11,6 +11,6 @@
         </form>
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-button color="primary" (click)="submit()">Save & Open</button>
+        <button mat-button color="primary" (click)="submit()" [hidden]="!beer.name">Save & Open</button>
     </mat-card-actions>
 </mat-card>

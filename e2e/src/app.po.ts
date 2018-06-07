@@ -1,11 +1,17 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-    navigateTo() {
+    navigateToDashboard () {
         return browser.get('/');
     }
 
-    getParagraphText() {
-        return element(by.css('app-root h1')).getText();
+    getDashboardTitleText () {
+        return element(by.css('.sidenav-container .mat-toolbar .title')).getText();
     }
+    getDashboardBestCardContent () {
+        return element(by.css('.sidenav-container .beer-card-content'));
+    }
+    getDashboardCards () {
+        return element(by.css('.sidenav-container .dashboard-card'));
+    }    
 }

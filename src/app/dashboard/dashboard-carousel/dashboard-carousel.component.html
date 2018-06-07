@@ -1,4 +1,4 @@
-<ngb-carousel *ngIf="images" class='intro'>
+<ngb-carousel *ngIf="images" class='intro' interval="0">
     <ng-template *ngFor="let image of images" ngbSlide>
         <img [src]="image.src">
         <div class="carousel-caption">

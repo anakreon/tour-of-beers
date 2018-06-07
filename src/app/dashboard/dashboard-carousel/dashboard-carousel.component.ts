@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { NgbCarousel } from '@ng-bootstrap/ng-bootstrap';
 
 interface Image {
     src: string;
@@ -11,7 +12,9 @@ interface Image {
     templateUrl: './dashboard-carousel.component.html',
     styleUrls: ['./dashboard-carousel.component.css']
 })
-export class DashboardCarouselComponent {
+export class DashboardCarouselComponent implements OnInit {
+    @ViewChild(NgbCarousel) private carousel: NgbCarousel;
+
     public images: Array<Image> = [{
         src: './assets/intro/1.jpg',
         header: '“He was a wise man who invented beer.”',
@@ -37,4 +40,16 @@ export class DashboardCarouselComponent {
         header: '“Beer’s intellectual. What a shame so many idiots drink it.”',
         text: '- Ray Bradbury -'
     }];
+
+    constructor (private _ngZone: NgZone) {}
+
+    ngOnInit () {
+        this._ngZone.runOutsideAngular(() => {
+            setInterval(() => {
+                this._ngZone.run(() => {
+                    this.carousel.next();
+                });
+            }, 5000);
+        });
+    }    
 }
