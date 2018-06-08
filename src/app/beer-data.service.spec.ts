@@ -3,7 +3,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { BeerDataService } from './beer-data.service';
 import { BeerStoreService } from './beer-store.service';
 
-const MockBeerStoreService = jasmine.createSpyObj('MockBeerStoreService', ['addBeer'])
+const MockBeerStoreService = jasmine.createSpyObj('MockBeerStoreService', ['addBeer']);
 
 describe('BeerDataService', () => {
     beforeEach(() => {

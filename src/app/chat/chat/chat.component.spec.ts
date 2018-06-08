@@ -5,6 +5,7 @@ import { ChatComponent } from './chat.component';
 import { Component, Input } from '@angular/core';
 import { DialogflowService } from '../dialogflow.service';
 import { AuthService } from '../../auth.service';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({ selector: 'app-chat-message-list', template: '' })
 class AppChatMessageList {
@@ -16,6 +17,7 @@ class AppChatMessageForm {}
 
 const MockDialogflowService = jasmine.createSpyObj('MockDialogflowService', ['getResponse']);
 const MockAuthService = jasmine.createSpyObj('MockAuthService', ['getUser']);
+const MockObservableMedia = jasmine.createSpyObj('MockObservableMedia', ['isActive']);
 
 describe('ChatComponent', () => {
     let component: ChatComponent;
@@ -31,6 +33,9 @@ describe('ChatComponent', () => {
             }, { 
                 provide: AuthService,
                 useValue: MockAuthService 
+            }, {
+                provide: ObservableMedia,
+                useValue: MockObservableMedia 
             }]
         })
             .compileComponents();

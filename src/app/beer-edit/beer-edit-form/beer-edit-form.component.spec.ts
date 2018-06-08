@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatFormFieldModule, MatGridListModule, MatButtonModule, MatInputModule } from '@angular/material';
 
 import { BeerEditFormComponent } from './beer-edit-form.component';
@@ -16,7 +16,7 @@ describe('BeerEditFormComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                MatCardModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatButtonModule, FormsModule, 
+                MatCardModule, MatFormFieldModule, MatGridListModule, MatInputModule, MatButtonModule, ReactiveFormsModule, 
                 BrowserAnimationsModule
             ],
             declarations: [BeerEditFormComponent],

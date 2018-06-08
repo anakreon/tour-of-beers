@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { MatCardModule } from '@angular/material';
 import { BeerCommentListComponent } from './beer-comment-list.component';
 
 describe('BeerCommentListComponent', () => {
@@ -8,6 +8,7 @@ describe('BeerCommentListComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [MatCardModule],
             declarations: [BeerCommentListComponent]
         })
             .compileComponents();
