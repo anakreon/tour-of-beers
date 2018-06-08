@@ -7,6 +7,7 @@ import { BeerImageService } from '../../beer-image.service';
 import { LoadingService } from '../../loading.service';
 import { BeerRatingService } from '../../beer-rating/beer-rating.service';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
+import { BeerCommentService } from '../../beer-comment/beer-comment.service';
 
 @Component({
     selector: 'app-beer-detail',
@@ -22,7 +23,8 @@ export class BeerDetailComponent implements OnInit {
     constructor (
         private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreService,
         private beerImageService: BeerImageService, private authService: AuthService, private loadingService: LoadingService,
-        private beerRatingService: BeerRatingService, private observableMedia: ObservableMedia
+        private beerRatingService: BeerRatingService, private beerCommentService: BeerCommentService,
+        private observableMedia: ObservableMedia
     ) {}
 
     ngOnInit () {
@@ -41,6 +43,7 @@ export class BeerDetailComponent implements OnInit {
         const unsetLoading = this.loadingService.setLoading();
         this.beerRatingService.deleteRatingsForBeer(this.beer.id)
             .then(() => this.beerImageService.deletePictureForBeer(this.beer.pictureId))
+            .then(() => this.beerCommentService.deleteCommentsForBeer(this.beer.id))
             .then(() => this.beerStoreService.deleteBeer(this.beer.id))
             .then(() => {
                 unsetLoading();

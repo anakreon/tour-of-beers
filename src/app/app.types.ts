@@ -27,6 +27,7 @@ export interface BeerRatingResult {
 
 export interface BeerComment {
     id?: string;
+    beerId: string;
     userId: string;
     userName: string;
     text: string;

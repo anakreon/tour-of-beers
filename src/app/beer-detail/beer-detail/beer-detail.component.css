@@ -24,12 +24,11 @@
 .rating-card {
     flex: 1;
     display: flex;
-    justify-content: center;
     flex-direction: column;
 }
 
 .rating-card .mat-card-content {
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 .brewery-card {
@@ -52,4 +51,8 @@
 .description ul {
     list-style: none;
     padding: 0px;
+}
+
+.brewery-card .mat-card-title {
+    font-size: 13pt;
 }

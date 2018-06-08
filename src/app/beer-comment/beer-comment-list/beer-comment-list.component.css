@@ -18,3 +18,7 @@
 ::ng-deep .mat-card-header-text {
     margin: 0px;
 }
+.material-icons {
+    float: right;
+    cursor: pointer;
+}

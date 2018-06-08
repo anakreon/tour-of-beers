@@ -1,5 +1,8 @@
 <div class="chat">
-    <button mat-raised-button [matMenuTriggerFor]="chatMenu">Let's talk beers here!</button>
+    <button mat-raised-button [matMenuTriggerFor]="chatMenu">
+        <i [hidden]="!isSmallScreen()" class="material-icons">chat</i>
+        <span [hidden]="isSmallScreen()">Let's talk beers here!</span>
+    </button>
     <mat-menu #chatMenu="matMenu" overlapTrigger="false" yPosition="below" xPosition="after" class="chat-menu">
         <div class="chatform" (click)="stopPropagation($event)">
             <app-chat-message-list [messages]="messages" #messageList></app-chat-message-list>

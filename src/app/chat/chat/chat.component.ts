@@ -3,6 +3,7 @@ import { Message } from '../models/message';
 import { DialogflowService } from '../dialogflow.service';
 import { AuthService } from '../../auth.service';
 import { ChatMessageListComponent } from '../chat-message-list/chat-message-list.component';
+import { ObservableMedia } from '@angular/flex-layout';
 
 @Component({
     selector: 'app-chat',
@@ -13,7 +14,10 @@ export class ChatComponent implements OnInit {
     @ViewChild('messageList') messageListElement: ChatMessageListComponent;
     public messages: Message[] = [];
 
-    constructor (private dialogFlowService: DialogflowService, private authService: AuthService) { }
+    constructor (
+        private dialogFlowService: DialogflowService, private authService: AuthService, 
+        private observableMedia: ObservableMedia
+    ) {}
 
     ngOnInit () {
         this.addBotMessage('Welcome to Tour of Beers', new Date());
@@ -45,5 +49,9 @@ export class ChatComponent implements OnInit {
 
     public stopPropagation(event): void {
         event.stopPropagation();
+    }
+
+    public isSmallScreen (): boolean {
+        return this.observableMedia.isActive('xs') || this.observableMedia.isActive('sm');
     }
 }

@@ -12,8 +12,11 @@ import { BeerCommentService } from '../beer-comment.service';
 export class BeerCommentComponent implements OnChanges {
     @Input('beerId') beerId: string;
     public comments: Observable<BeerComment[]>;
+    public userId: Observable<string>;
 
-    constructor (private beerCommentService: BeerCommentService, private authService: AuthService) {}
+    constructor (private beerCommentService: BeerCommentService, private authService: AuthService) {
+        this.userId = authService.getUserId();
+    }
 
     ngOnChanges () {
         this.comments = this.beerCommentService.getComments(this.beerId);
@@ -22,6 +25,10 @@ export class BeerCommentComponent implements OnChanges {
     public addComment (text: string): void {
         const user = this.authService.getUser();
         this.beerCommentService.addComment(this.beerId, user.uid, user.displayName, text);
+    }
+
+    public deleteComment (commentId: string): void {
+        this.beerCommentService.deleteComment(commentId);
     }
 
 }

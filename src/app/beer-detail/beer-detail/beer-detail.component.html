@@ -27,6 +27,12 @@
             <button mat-raised-button color="warn" (click)="deleteBeer()">DELETE</button>
         </mat-card-actions>
     </mat-card>
+    <mat-card class="brewery-card">
+        <mat-card-title>{{ beer.brewery }}</mat-card-title>
+        <mat-card-content>
+            <app-beer-detail-map [address]="beer.brewery"></app-beer-detail-map>
+        </mat-card-content>
+    </mat-card>
     <mat-card class="rating-card" *ngIf="isUserAuthenticated()">
         <mat-card-content>
             Rate beer:
@@ -34,12 +40,6 @@
         </mat-card-content>
         <mat-card-content>
             <app-beer-comment [beerId]="beer.id"></app-beer-comment>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="brewery-card">
-        <mat-card-title>{{ beer.brewery }}</mat-card-title>
-        <mat-card-content>
-            <app-beer-detail-map [address]="beer.brewery"></app-beer-detail-map>
         </mat-card-content>
     </mat-card>
 </div>
