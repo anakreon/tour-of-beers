@@ -12,7 +12,7 @@ import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 export class DashboardComponent implements OnInit, AfterContentInit {
     public beers: Beer[];
     public bestBeer: Beer;
-    public gridCols: number;
+    public gridCols: number = 3;
     public shouldShowCarousel = true;
     private gridByBreakpoint = {
         xl: 5,
