@@ -13,31 +13,31 @@
 
 ## Task:
 ### Create an app with the following views:
-- [ ] Dashboard listing some selection of beers
-- [ ] List page listing all the beers (possibly with some details)
-- [ ] Detail page listing the details of a single beer
-- [ ] “Add beer” page to add any kind of good (Czech) beer
+- [x] Dashboard listing some selection of beers
+- [x] List page listing all the beers (possibly with some details)
+- [x] Detail page listing the details of a single beer
+- [x] “Add beer” page to add any kind of good (Czech) beer
 ### Actions - you should be able to:
-- [ ] Add a beer, its description and a picture (yes, picture is mandatory)
-- [ ] Remove a beer
-- [ ] Navigate easily between the screens
+- [x] Add a beer, its description and a picture (yes, picture is mandatory)
+- [x] Remove a beer
+- [x] Navigate easily between the screens
 ### It’s up to you to:
-- [ ] Create the design (should be basic)
-- [ ] Create the views
-- [ ] Create the routes and navigation
-- [ ] Add action links where convenient
-- [ ] Create the module / component structure
+- [x] Create the design (should be basic)
+- [x] Create the views
+- [x] Create the routes and navigation
+- [x] Add action links where convenient
+- [x] Create the module / component structure
 ## Do:
 - [x] Create a public Github repository for this
-- [ ] Use Angular CLI to generate the project, components, modules, ...
-- [ ] Use Angular Material for as many components as possible
-- [ ] Follow clean coding standards
+- [x] Use Angular CLI to generate the project, components, modules, ...
+- [x] Use Angular Material for as many components as possible
+- [x] Follow clean coding standards
 - [ ] Write unit tests as per examples, including e2e
-- [ ] Be creative - bonus points for bonus features
-- [ ] Try not to follow the Tour of Heroes too much
+- [x] Be creative - bonus points for bonus features
+- [x] Try not to follow the Tour of Heroes too much
 
 ## Optionally (more bonus points):
-- [ ] \(Optional) Be responsive, use state-management system, service worker, external database
+- [x] \(Optional) Be responsive, use state-management system, service worker, external database
 ---
 
 - You can get inspired with Tour of Heroes: https://angular.io/tutorial
