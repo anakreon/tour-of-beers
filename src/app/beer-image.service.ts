@@ -7,9 +7,10 @@ import { AngularFireStorage } from 'angularfire2/storage';
 export class BeerImageService {
     constructor (private afStorage: AngularFireStorage) { }
     
-    public uploadPicture (pictureId: string = this.generatePictureId(), picture: any): Promise<string> {
-        const ref = this.afStorage.ref(pictureId);
-        return ref.put(picture).then(() => pictureId);
+    public uploadPicture (pictureId: string, picture: any): Promise<string> {
+        const id = pictureId || this.generatePictureId();
+        const ref = this.afStorage.ref(id);
+        return ref.put(picture).then(() => id);
     }
     private generatePictureId (): string {
         return Math.random().toString(36).substring(2);

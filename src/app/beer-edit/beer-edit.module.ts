@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule, MatFormFieldModule, MatGridListModule, MatButtonModule, MatInputModule } from '@angular/material';
 
 import { BeerEditFormComponent } from './beer-edit-form/beer-edit-form.component';
@@ -10,7 +10,7 @@ import { BeerEditImageComponent } from './beer-edit-image/beer-edit-image.compon
 @NgModule({
     imports: [
         CommonModule,
-        FormsModule,
+        ReactiveFormsModule,
         MatCardModule,
         MatFormFieldModule,
         MatGridListModule,

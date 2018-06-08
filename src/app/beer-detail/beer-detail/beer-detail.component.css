@@ -56,3 +56,7 @@
 .brewery-card .mat-card-title {
     font-size: 13pt;
 }
+
+.delete-input {
+    margin-left: 4px;
+}

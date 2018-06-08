@@ -19,6 +19,7 @@ export class BeerDetailComponent implements OnInit {
     public beerPictureUrl = '';
     public flexDirection = 'row';
     public isLoading = false;
+    public shouldShowDeleteConfirmation = false;
 
     constructor (
         private route: ActivatedRoute, private router: Router, private beerStoreService: BeerStoreService,
@@ -39,22 +40,6 @@ export class BeerDetailComponent implements OnInit {
         return this.authService.isAuthenticated();
     }
 
-    public deleteBeer () {
-        const unsetLoading = this.loadingService.setLoading();
-        this.beerRatingService.deleteRatingsForBeer(this.beer.id)
-            .then(() => this.beerImageService.deletePictureForBeer(this.beer.pictureId))
-            .then(() => this.beerCommentService.deleteCommentsForBeer(this.beer.id))
-            .then(() => this.beerStoreService.deleteBeer(this.beer.id))
-            .then(() => {
-                unsetLoading();
-                this.navigateToDashboard();
-            })
-            .catch((error) => console.log(error));
-    }
-    private navigateToDashboard () {
-        this.router.navigate(['/dashboard']);
-    }
-
     private getBeer (): void {
         const unsetLoading = this.loadingService.setLoading();
         const id = this.route.snapshot.paramMap.get('id');
@@ -70,5 +55,28 @@ export class BeerDetailComponent implements OnInit {
 
     public onImageLoad () {
         this.isLoading = false;
+    }
+    public showDeleteConfirmation () {
+        this.shouldShowDeleteConfirmation = true;
+    }
+    public tryToDeleteBeer (event) {
+        if (event.target.value === 'DELETE') {
+            this.deleteBeer();
+        }
+    }
+    private deleteBeer () {
+        const unsetLoading = this.loadingService.setLoading();
+        this.beerRatingService.deleteRatingsForBeer(this.beer.id)
+            .then(() => this.beerImageService.deletePictureForBeer(this.beer.pictureId))
+            .then(() => this.beerCommentService.deleteCommentsForBeer(this.beer.id))
+            .then(() => this.beerStoreService.deleteBeer(this.beer.id))
+            .then(() => {
+                unsetLoading();
+                this.navigateToDashboard();
+            })
+            .catch((error) => console.log(error));
+    }
+    private navigateToDashboard () {
+        this.router.navigate(['/dashboard']);
     }
 }

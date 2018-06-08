@@ -24,10 +24,11 @@
         </mat-card-content>
         <mat-card-actions *ngIf="isUserAuthenticated()">
             <button mat-raised-button routerLink="/edit/{{beer.id}}">EDIT</button>
-            <button mat-raised-button color="warn" (click)="deleteBeer()">DELETE</button>
+            <button [hidden]="shouldShowDeleteConfirmation" mat-raised-button color="warn" (click)="showDeleteConfirmation()">DELETE</button>
+            <input class='delete-input' [hidden]="!shouldShowDeleteConfirmation" type="text" placeholder="Type 'DELETE' to delete" (keyup.enter)="tryToDeleteBeer($event)" />
         </mat-card-actions>
     </mat-card>
-    <mat-card class="brewery-card">
+    <mat-card class="brewery-card" *ngIf="beer.brewery">
         <mat-card-title>{{ beer.brewery }}</mat-card-title>
         <mat-card-content>
             <app-beer-detail-map [address]="beer.brewery"></app-beer-detail-map>

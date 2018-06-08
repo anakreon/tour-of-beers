@@ -46,11 +46,12 @@ export class BeerEditComponent implements OnInit {
         this.pictureHasChanged = false;
     }
 
-    public submit (beer: Beer) { 
+    public submit (beer: Beer) {
+        this.beer = beer;
         const promise = this.uploadPicture()
-            .then(() => this.beerStoreService.updateBeer(beer))
+            .then(() => this.beerStoreService.updateBeer(this.beer))
             .then(() => {
-                this.navigateToBeerdetailPage(beer.id);
+                this.navigateToBeerdetailPage(this.beer.id);
             });
         this.loadingService.wrapWithLoading(promise);
     }
